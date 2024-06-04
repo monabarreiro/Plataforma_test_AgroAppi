@@ -1,3 +1,4 @@
+
 export const Menu_Uva=()=> {
     return (
         <div>
@@ -7,9 +8,10 @@ export const Menu_Uva=()=> {
 
                 </h2>
             </div>
-            <a href=""> <button className="btn btn-lg btn-warning btn-block m-3" type="texto">
+            <a href="https://herbariofitopatologia.agro.uba.ar/?page_id=23319"> 
+            <button className="btn btn-lg btn-warning btn-block m-3" type="texto">
             
-
+Acaro de la Vid
              </button>
 
              </a> <br />  

@@ -3,6 +3,8 @@ import trigo_presentado from "../img/trigo_presentado.jpg";
 import uvita from "../img/uvita.jpg";
 import maiz from "../img/maiz.jpg";
 
+import { Link } from 'react-router-dom';
+
 export const DescLimon = ()=> {
 return (  
     <div>
@@ -25,6 +27,13 @@ Esto gracias a sus facilidades de adaptación y manejo productivo en la región 
 donde puede producirse durante todo el año. Estimaciones de la FAO (FAOSTAT) <br />
 consideran que la producción de limas y limones supero los 20 millones de toneladas desde el 2019. <br />
   </p>
+
+< Link to="/Menu_Citricos"> <button className="btn btn-lg btn-warning btn-block m-5" type="submit">
+Enfermedades de los Cítricos </button>
+       </Link>
+
+
+
     </div>
   )
 };
@@ -47,6 +56,10 @@ export const DescTrigo = ()=> {
     
         
       </p>
+      < Link to="/Menu_Trigo"> <button className="btn btn-lg btn-success btn-block m-5" type="submit"> 
+       Enfermedades del Trigo</button>
+       </Link>
+
         </div>
       )
     };
@@ -66,6 +79,10 @@ export const DescTrigo = ()=> {
         Los primeros cultivos en España están documentados en Cádiz <br />
         y datan aproximadamente del 1100 a.C.
         </p>
+
+        < Link to="/Menu_Uva"> <button className="btn btn-lg btn-primary btn-block m-5" type="submit">
+          Enfermedades de la Vid</button>
+       </Link>
           </div>
         )
       };
@@ -84,8 +101,12 @@ export const DescTrigo = ()=> {
         es una planta domesticada y altamente productiva que no crece en forma salvaje <br />
         por lo que es completamente dependiente de los cuidados del hombre.
           
-            
+
           </p>
+          < Link to="/Menu_Maiz"> <button className="btn btn-lg btn-primary btn-block m-5" type="submit">
+            Enfermedades del Maíz
+          </button>
+       </Link>
             </div>
           )
         };
