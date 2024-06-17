@@ -22,6 +22,8 @@ const Lista_cultivos =() => {
   return (
 
     <div className= "container ">
+      <div className=''></div>
+      <img src="" alt="Logo de la pagina" />
       <h1 className= "text-center mt-5">Cultivos Referentes de Argentina</h1>
   <div className="  row align-items-start" style ={{backgroundColor:"#FEFAE0"}} >
   <Prueba className="col-4" nombre = " Limón "i="0"/>

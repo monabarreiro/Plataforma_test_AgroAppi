@@ -37,7 +37,7 @@ export const Prueba = (cultivo) => {
       <div className="p-1 m-4 mt-1 text-center">
         <Link to={array_enfermedades[cultivo.i]}>
           {" "}
-          <button className="p-1 m-4 mt-1 text-center">
+          <button className="p-1 m-4 mt-1 text-center btn btn-success">
             Enfermedades {cultivo.nombre}
           </button>{" "}
         </Link>
