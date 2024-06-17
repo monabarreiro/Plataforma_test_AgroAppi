@@ -22,9 +22,7 @@ const Lista_cultivos =() => {
   return (
 
     <div className= "container ">
-      <h1 className= "text-center">
-                    Cultivos Referentes de Argentina
-                    </h1>
+      <h1 className= "text-center mt-5">Cultivos Referentes de Argentina</h1>
   <div className="  row align-items-start" style ={{backgroundColor:"#FEFAE0"}} >
   <Prueba className="col-4" nombre = " Limón "i="0"/>
   <Prueba className="col-4" nombre = " Maíz " i="1"/>
