@@ -1,10 +1,11 @@
-
+import { Link } from "react-router-dom"
 export const Menu_Maiz=()=>{
     return(
         <div>
             <div>
              <h2 className= "m-3">
                     Enfermedades del Maíz 
+                 
                 </h2>
             
             </div>
@@ -64,6 +65,11 @@ export const Menu_Maiz=()=>{
  
             </button>
             </a> <br />
+
+            < Link to="/Lista_cultivos"> <button className="btn btn-lg btn-  btn-block m-5" type="submit">
+    Volver a Lista de cultivos </button>
+       </Link>
+
         </div>
 
     )

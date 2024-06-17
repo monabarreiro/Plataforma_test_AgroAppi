@@ -19,6 +19,7 @@ export const Login =()=>{
     try {
       await signInWithEmailAndPassword(auth, email, password);
       // Login successful
+      
       console.log("Login exitoso");
       if(email=='monicabarreiro@gmail.com'){
         console.log("sos Administrador");

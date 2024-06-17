@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 
 export const Menu_Citricos=()=> {
     return (
@@ -63,6 +63,10 @@ HLB HuangLongBing  <br /> La enfermedad más grave para los cítricos
              </button>
 
              </a>  <br /> 
+
+            < Link to="/Lista_cultivos"> <button className="btn btn-lg btn-  btn-block m-5" type="submit">
+    Volver a Lista de cultivos </button>
+       </Link>
         </div>
     )
        
