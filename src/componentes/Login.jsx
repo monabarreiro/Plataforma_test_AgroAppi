@@ -4,6 +4,8 @@ import { getAuth } from '../../node_modules/firebase/auth';
 import { signInWithEmailAndPassword } from '../../node_modules/firebase/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  
+import { NavBar } from './NavBar';
+import img12 from"../img/logoagroappi.png";
 
 
 export const Login =()=>{
@@ -33,6 +35,8 @@ export const Login =()=>{
 // Formulario para completar 
     return(
       <div className="container">
+        <NavBar/>
+        <img src={img12} alt="" width={"100px"} />
         <h2 className="form-signin-heading"> Por favor inicie sesión </h2>
        
       <form className ="form-signin" onSubmit = {handleLogin}>

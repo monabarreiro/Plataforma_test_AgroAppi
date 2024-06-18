@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { NavBar } from './NavBar';
 
 import { initializeApp } from '../../node_modules/firebase/app';
+import img12 from"../img/logoagroappi.png";
+
 
 //import '../../node_modules/firebase/auth';
 //import '../../node_modules/firebase/database';
@@ -17,9 +20,17 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);  //* conexion con Firebase *
  console.log(app);
 
+ export const Logout =()=>{   // ver esta variable   //
+  return ("../Register.jsx")
+}
+  
+
  export const Register =()=>{
     return(
+     
       <div className="container">
+        <NavBar/> 
+        <img src={img12} alt="" width={"100px"} />
       <form className="form-signin">
         <h2 className="form-signin-heading">Por favor regístrese </h2>
         <label htmlFor="inputName" className="sr-only">Nombre</label>
@@ -45,5 +56,6 @@ const firebaseConfig = {
        </Link>
       </form>
     </div>
+    
 )
 };

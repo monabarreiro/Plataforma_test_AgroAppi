@@ -11,7 +11,7 @@ return (
 <h1 className ="m-5">
     El cultivo de los cítricos como el Limón 
 </h1>
-   <img src = {jarra} className= "m-5"/> 
+   <img src = {jarra} alt="" width={"400px"}className= "m-5"/> 
    
   <p className = " m-5 ">
   El Limón, es la denominación que damos en américa latina a dos especies de plantas del género    <br />

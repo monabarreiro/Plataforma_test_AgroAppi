@@ -13,6 +13,8 @@ import {Menu_Maiz}from './componentes/Menu_Maiz';
 import {Menu_Trigo}from './componentes/Menu_Trigo';
 import {Menu_Uva}from './componentes/Menu_Uva';
 import "./Main.css";
+import{NavBar} from "./componentes/NavBar";
+
 
 
 
@@ -22,8 +24,12 @@ const Lista_cultivos =() => {
   return (
 
     <div className= "container ">
+      <NavBar>  </NavBar>
+    
       <h1 className= "text-center">
+      
                     Cultivos Referentes de Argentina
+                  
                     </h1>
   <div className="  row align-items-start" style ={{backgroundColor:"#FEFAE0"}} >
   <Prueba className="col-4" nombre = " Limón "i="0"/>

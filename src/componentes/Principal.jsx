@@ -1,22 +1,26 @@
 import { Link } from 'react-router-dom'; // va aqui el Link 
-
+import { NavBar } from './NavBar';
+import img12 from"../img/logoagroappi.png";
 
 export const Principal =()=>{
 
     return(
         <div> 
-            <h1 className= "m-3"> Bienvenido a AgroAppi </h1>
+           <NavBar/>
+        
+          <img src={img12} alt="" width={"100px"} />
+            <h2 className= "m-3"> Bienvenido a AgroAppi </h2>
+        
 
-
-               <h4 className= "m-3">Si no está registrado regístrese </h4> 
+               <h5 className= "m-3">Si no está registrado regístrese </h5> 
 
                <Link to = "/Register" className= "">
                  <button className="btn btn-lg btn-primary
                   btn-block m-3" type="texto"> Para registrarse haga click aquí.</button>
                </Link>
 
-              <h4 className= "m-3">
-                Si ya está registrado entre con su clave y contraseña</h4> 
+              <h5 className= "m-3">
+                Si ya está registrado entre con su clave y contraseña</h5> 
                <Link to = "/Login" className= ""> 
 
                <button className="btn btn-lg btn-primary

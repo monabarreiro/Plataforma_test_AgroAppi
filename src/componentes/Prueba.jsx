@@ -10,6 +10,7 @@ import "../Main.css";
 
 
 
+
 export const Prueba = (cultivo)=> {
     let lista_cultivos = [img1, img2, img3, img4];
     let array_desc = ["/DescLimon", "/DescMaiz", "/DescUva", "/DescTrigo"];
@@ -30,7 +31,7 @@ export const Prueba = (cultivo)=> {
              <div className= "p-1 m-4 mt-1 text-center">
 
             
-             <Link  to= {array_enfermedades[cultivo.i]} > <button className="p-1 m-4 mt-1 text-center">
+             <Link  to= {array_enfermedades[cultivo.i]} > <button className="p-1 m-4 mt-1 btn-btn text-center">
                 Enfermedades {cultivo.nombre}
              </button> </Link>
              </div>
