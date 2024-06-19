@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import img1 from "../img/limon.jpg";
 import img2 from "../img/maiz.jpg";
-import img3 from"../img/uva.jpg";
-import img4 from"../img/trigo.jpg";
+import img3 from "../img/uva.jpg";
+import img4 from "../img/trigo.jpg";
 
 import "../Main.css";
 

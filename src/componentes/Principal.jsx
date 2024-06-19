@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'; // va aqui el Link 
 import { NavBar } from './NavBar';
-import img12 from"../img/logoagroappi.png";
+import {img12} from"../img/logoagroappi.png";
 
 export const Principal =()=>{
 
