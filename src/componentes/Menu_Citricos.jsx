@@ -24,7 +24,7 @@ export const Menu_Citricos=()=> {
              </a> <br />  
 
     <a className="col-4"  href="https://herbariofitopatologia.agro.uba.ar/?page_id=12058" target="blank">
-<button className="btn btn-lg btn-warning btn-block m-3" type="texto">
+    <button className="btn btn-lg btn-warning btn-block m-3" type="texto">
              Acaro de las yemas
 
              </button>
@@ -32,7 +32,7 @@ export const Menu_Citricos=()=> {
     </a>  <br /> 
 
     <a className="col-4"  href="https://herbariofitopatologia.agro.uba.ar/?page_id=2825"target="blank">
-<button className="btn btn-lg btn-warning btn-block m-3" type="texto">
+    <button className="btn btn-lg btn-warning btn-block m-3" type="texto">
              Clorosis en cítricos por desbalance nutricional
 
 
