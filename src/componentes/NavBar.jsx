@@ -6,7 +6,7 @@ export const NavBar=( )=>{
     return (<div>
 
 <ul>
-  <li> <Link to=""> <a className="active" href="#home">Logout</a></Link>
+  <li> <Link to="/"> <a className="active" href="#logut">Logout</a></Link>
   </li> 
   <li> <Link to="/login" >  <a href="#register">Login</a></Link>  </li>
   <li> <Link to="/register" >  <a href="#login">Register</a></Link>  </li>

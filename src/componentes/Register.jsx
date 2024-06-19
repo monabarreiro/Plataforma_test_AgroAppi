@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { NavBar } from './NavBar';
 
 import { initializeApp } from '../../node_modules/firebase/app';
-import img12 from"../img/logoagroappi.png";
+import img12 from "../img/logoagroappi.png";
 
 
 //import '../../node_modules/firebase/auth';

@@ -14,6 +14,7 @@ import {Menu_Maiz}from './componentes/Menu_Maiz';
 import {Menu_Trigo}from './componentes/Menu_Trigo';
 import {Menu_Uva}from './componentes/Menu_Uva';
 import "./Main.css";
+import img14 from "./img/logoagroappi.png";
 
 
 
@@ -29,6 +30,8 @@ const Lista_cultivos =() => {
       <h1 className= "text-center">
                     Cultivos Referentes de Argentina
                     </h1>
+                    <img src={img14} alt="" width={"100px"} />
+
   <div className="  row align-items-start" style ={{backgroundColor:"#FEFAE0"}} >
   <Prueba className="col-4" nombre = " Limón "i="0"/>
   <Prueba className="col-4" nombre = " Maíz " i="1"/>

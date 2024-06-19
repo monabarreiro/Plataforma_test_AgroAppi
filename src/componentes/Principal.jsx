@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom'; // va aqui el Link 
 import { NavBar } from './NavBar';
-import {img12} from"../img/logoagroappi.png";
+import img13 from "../img/logoagroappi.png";
+
 
 export const Principal =()=>{
 
     return(
         <div> 
            <NavBar/>
+
+            <img src={img13} alt="" width={"100px"} />
         
-          <img src={img12} alt="" width={"100px"} />
+        
             <h2 className= "m-3"> Bienvenido a AgroAppi </h2>
         
 
