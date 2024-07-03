@@ -1,7 +1,7 @@
 
-import { app } from "./firebase";   
-import { getAuth } from '../../node_modules/firebase/auth';
-import { signInWithEmailAndPassword } from '../../node_modules/firebase/auth';
+import { app } from "../backend/firebase";   
+import { getAuth } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  
 import { NavBar } from './NavBar';
@@ -22,16 +22,18 @@ export const Login =()=>{
       await signInWithEmailAndPassword(auth, email, password);
       // Login successful
       
-      console.log("Login exitoso");
+      alert("Login exitoso");
       if(email =='monicabarreiro@gmail.com' && password == 'Monica1234'){
-        console.log("sos Administrador");
+        alert("Sos Administrador");
+
       }
       navigate("/Lista_cultivos");
     } catch (err) {
       setError(err.message);
-      console.log(error);
+      alert(error);
     }
   };
+  
 // Formulario para completar 
     return(
       <div className="container">

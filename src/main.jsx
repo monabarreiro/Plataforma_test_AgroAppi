@@ -1,20 +1,21 @@
 import React from 'react'
-import {NavBar} from "./componentes/NavBar";
+import {NavBar} from "./frontend/NavBar";
 import ReactDOM from 'react-dom/client'
-import {Principal} from './componentes/Principal'
+import {Principal} from './frontend/Principal'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import { Register} from './componentes/Register'
+import { Register} from './frontend/Register'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { Prueba } from './componentes/Prueba';
+import { Prueba } from './frontend/Prueba';
 import{DescLimon, DescTrigo, DescUva, DescMaiz}from './componentes/Descripcion';
 
-import { Login} from './componentes/Login';
-import { Menu_Citricos} from './componentes/Menu_Citricos';
-import {Menu_Maiz}from './componentes/Menu_Maiz'; 
-import {Menu_Trigo}from './componentes/Menu_Trigo';
-import {Menu_Uva}from './componentes/Menu_Uva';
+import { Login} from './frontend/Login';
+import { Menu_Citricos} from './frontend/Menu_Citricos';
+import {Menu_Maiz}from './frontend/Menu_Maiz'; 
+import {Menu_Trigo}from './frontend/Menu_Trigo';
+import {Menu_Uva}from './frontend/Menu_Uva';
 import "./Main.css";
 import img14 from "./img/logoagroappi.png";
+import{Mostrar_componentes} from "./frontend/Mostrar_componentes";
 
 
 
@@ -63,6 +64,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Menu_Maiz" element={<Menu_Maiz />} />
         <Route path="/Menu_Trigo" element={<Menu_Trigo />} />
         <Route path="/Menu_Uva" element={<Menu_Uva />} />
+        <Route path="/Mostrar_componentes" element={<Mostrar_componentes />} />
 
       </Routes> 
     </Router>
