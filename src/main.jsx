@@ -64,7 +64,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Menu_Maiz" element={<Menu_Maiz />} />
         <Route path="/Menu_Trigo" element={<Menu_Trigo />} />
         <Route path="/Menu_Uva" element={<Menu_Uva />} />
-        <Route path="/Mostrar_componentes" element={<Mostrar_componentes />} />
+        <Route path="/Mostrar_componentes/:id" element={<Mostrar_componentes />} />
 
       </Routes> 
     </Router>

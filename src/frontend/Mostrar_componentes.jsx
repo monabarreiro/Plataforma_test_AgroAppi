@@ -3,6 +3,7 @@ import { getDoc, doc } from "firebase/firestore";
 import { useState,useEffect } from 'react'; 
 var Titulo = " ";
 var Descripcion = " ";
+import { useParams } from 'react-router-dom';
 
 
 
@@ -10,11 +11,11 @@ var Descripcion = " ";
 export const Mostrar_componentes= () =>{
     const [datos, setData] = useState([]);
     const [descripcion, setDescripcion] = useState([]);
-   
+    const { id } = useParams();
     useEffect(() => {
       async function showTitulo() {
         // Referencia al documento
-        const boatRef = doc(db, "bd_enfermedades_limon/atracnosis");
+        const boatRef = doc(db, "bd_enfermedades_limon/" + id);
         try {
           // Obtener el snapshot del documento
           const docSnap = await getDoc(boatRef);
@@ -23,7 +24,7 @@ export const Mostrar_componentes= () =>{
            
             Titulo = docSnap.data().Titulo;
             setData(Titulo);
-            Descripcion= docSnap.data().descripcion
+            Descripcion= docSnap.data().a
             setDescripcion(Descripcion);
 
             // Actualizar la UI si es necesario

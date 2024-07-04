@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom"
 import img8 from "../img/limon_para_enf.jpg"
 import "./Menu.css";
+ 
+
+
 
 export const Menu_Citricos=()=> {
+  
     return (
         <div className="container">
 
@@ -16,62 +20,73 @@ export const Menu_Citricos=()=> {
             </div>
 
             <div className= "row align-items-start">
-            <a className="col-4" href="http:///herbariofitopatologia.agro.uba.ar/?page_id=280" target="blank"> <button className="btn btn-lg btn-warning btn-block m-3" type="texto">
+           
+            <Link to="/Mostrar_componentes/atracnosis" className="col-4" target="blank"> 
+            <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
+             >
                Antracnosis de los cítricos en frutos y hojas 
 
              </button>
+                </Link>
+             <br />  
 
-             </a> <br />  
-
-    <a className="col-4"  href="https://herbariofitopatologia.agro.uba.ar/?page_id=12058" target="blank">
-    <button className="btn btn-lg btn-warning btn-block m-3" type="texto">
-             Acaro de las yemas
+             <Link to="/Mostrar_componentes/acaros" className="col-4" target="blank"> 
+            <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
+             >
+               Acaro de las yemas 
 
              </button>
+                </Link>
    
-    </a>  <br /> 
+     <br /> 
 
-    <a className="col-4"  href="https://herbariofitopatologia.agro.uba.ar/?page_id=2825"target="blank">
-    <button className="btn btn-lg btn-warning btn-block m-3" type="texto">
-             Clorosis en cítricos por desbalance nutricional
-
-
-             </button>
-             </a>  <br /> 
-
-    <a  className="col-4" href="https://herbariofitopatologia.agro.uba.ar/?page_id=284"target="blank">
-<button className="btn btn-lg btn-warning btn-block m-3" type="texto">
-             Cancrosis de los cítricos
+     <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
+            <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
+             >
+             Clorosis en cítricos 
 
              </button>
-             </a>  <br /> 
+                </Link>
+    <br /> 
 
-
-             <a  className="col-4" href="https://herbariofitopatologia.agro.uba.ar/?page_id=302"target="blank">
-<button className="btn btn-lg btn-warning btn-block m-3" type="texto">
-              Mancha Negra
-             
-
-             </button>
-             </a>  <br /> 
-
-             <a className="col-4"  href="https://herbariofitopatologia.agro.uba.ar/?page_id=12077"target="blank">
-<button className="btn btn-lg btn-warning btn-block m-3" type="texto">
-             Cochinilla de los cítricos
-             
+    <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
+            <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
+             >
+               Cancrosis de los cítricos 
 
              </button>
-             </a>  <br /> 
+                </Link>
+    <br /> 
+
+
+    <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
+            <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
+             >
+             Mancha Negra
+
+             </button>
+                </Link>
+    <br /> 
+
+    <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
+            <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
+             >Cochinilla de los Cítricos
+
+             </button>
+                </Link>
+    <br /> 
 
  
-             <a href="https://herbariofitopatologia.agro.uba.ar/?page_id=710"target="blank">
-<button className="btn btn-lg btn-warning btn-block m-3" type="texto">
-HLB HuangLongBing  <br /> La enfermedad más grave para los cítricos
-             
+    <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
+            <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
+             >
+               HLB HuangLongBing La enfermedad más peligrosa para los cítricos,<br/>
+
+               ya que no tiene cura. Sí, se puede prevenir. 
 
              </button>
-
-             </a>  <br /> 
+                </Link>
+    <br /> 
 
             < Link to="/Lista_cultivos"> <button className="btn btn-lg btn-success  btn-block m-5" type="submit">
     Volver a Lista de cultivos </button>

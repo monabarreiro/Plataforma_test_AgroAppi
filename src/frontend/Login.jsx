@@ -23,7 +23,7 @@ export const Login =()=>{
       // Login successful
       
       alert("Login exitoso");
-      if(email =='monicabarreiro@gmail.com' && password == 'Monica1234'){
+      if(email =='monicabarreiro@gmail.com' && password == '123456'){
         alert("Sos Administrador");
 
       }
