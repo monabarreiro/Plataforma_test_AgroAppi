@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import { NavBar } from './NavBar';
+import {app} from '../backend/firebase';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from 'react';
 
 import img12 from "../img/logoagroappi.png";
 
@@ -14,6 +17,29 @@ import img12 from "../img/logoagroappi.png";
   
 
  export const Register =()=>{
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function crearUsuario (){
+  const auth = getAuth(app);
+    
+
+    createUserWithEmailAndPassword(auth, email, password)
+     .then((userCredential) => {
+       // Signed in 
+       var user = userCredential.user;
+       alert('El usuario se ha creado correctamente');
+       console.log('El usuario se ha creado correctamente', user);
+       //...
+     })
+     .catch((error) => {
+       var errorCode = error.code;
+       var errorMessage = error.message;
+       alert('Error al crear el usuario', errorMessage);
+       console.log('Error al crear el usuario', errorCode, errorMessage);
+       //..
+     });
+  }
     return(
      
       <div className="container">
@@ -51,6 +77,9 @@ import img12 from "../img/logoagroappi.png";
         <input
           type="email"
           id="inputEmail"
+          onChange={
+            (e) => setEmail(e.target.value)
+          }
           className="form-control"
           placeholder="direccion email"
           required
@@ -75,6 +104,9 @@ import img12 from "../img/logoagroappi.png";
         <input
           type="password"
           id="inputPassword"
+          onChange={
+            (e) => setPassword(e.target.value)
+          }
           className="form-control"
           placeholder="Password"
           required
@@ -85,15 +117,16 @@ import img12 from "../img/logoagroappi.png";
             Recordame
           </label>
         </div>
-        <Link to="/Login">
+
           {" "}
           <button
             className="btn btn-lg btn-primary btn-block mt-3"
             type="submit"
+            onClick={crearUsuario}
           >
             Sign in
           </button>
-        </Link>
+      
       </form>
     </div>
   );
