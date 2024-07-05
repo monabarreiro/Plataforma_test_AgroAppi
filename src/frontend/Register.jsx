@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+
 import { NavBar } from './NavBar';
 import {app} from '../backend/firebase';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -19,33 +19,30 @@ import img12 from "../img/logoagroappi.png";
  export const Register =()=>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  console.log(error);
 
-  function crearUsuario (){
   const auth = getAuth(app);
     
-
-    createUserWithEmailAndPassword(auth, email, password)
-     .then((userCredential) => {
-       // Signed in 
-       var user = userCredential.user;
-       alert('El usuario se ha creado correctamente');
-       console.log('El usuario se ha creado correctamente', user);
-       //...
-     })
-     .catch((error) => {
-       var errorCode = error.code;
-       var errorMessage = error.message;
-       alert('Error al crear el usuario', errorMessage);
-       console.log('Error al crear el usuario', errorCode, errorMessage);
-       //..
-     });
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert('User created successfully!');
+    } catch (error) {
+      setError(error.message);
+    } 
   }
+
+  // Formulario para completar
     return(
      
       <div className="container">
-        <NavBar/> 
+      <NavBar/>
         <img src={img12} alt="" width={"100px"} />
-      <form className="form-signin">
+
+      <form className="form-signin" onSubmit={handleSignUp}>
         <h2 className="form-signin-heading fw-bold">Por favor regístrese: </h2>
         <label htmlFor="inputName" className="sr-only fw-bold m-1">
           Nombre
@@ -59,23 +56,12 @@ import img12 from "../img/logoagroappi.png";
           autoFocus
         />
 
-        <label htmlFor="inputName" className="sr-only fw-bold m-1">
-          Apellido
-        </label>
-        <input
-          type="text"
-          id="inputName"
-          className="form-control"
-          placeholder="Apellido"
-          required
-          autoFocus
-        />
-
         <label htmlFor="inputEmail" className="sr-only fw-bold m-1">
           Direccion de email
         </label>
         <input
           type="email"
+          value={email}
           id="inputEmail"
           onChange={
             (e) => setEmail(e.target.value)
@@ -103,6 +89,7 @@ import img12 from "../img/logoagroappi.png";
         </label>
         <input
           type="password"
+          value={password}
           id="inputPassword"
           onChange={
             (e) => setPassword(e.target.value)
@@ -117,12 +104,10 @@ import img12 from "../img/logoagroappi.png";
             Recordame
           </label>
         </div>
-
-          {" "}
           <button
             className="btn btn-lg btn-primary btn-block mt-3"
             type="submit"
-            onClick={crearUsuario}
+          
           >
             Sign in
           </button>

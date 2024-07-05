@@ -40,7 +40,7 @@ export const Menu_Citricos=()=> {
    
      <br /> 
 
-     <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
+     <Link to="/Mostrar_componentes/clorosis" className="col-4" target="blank"> 
             <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
              >
              Clorosis en cítricos 
@@ -49,7 +49,7 @@ export const Menu_Citricos=()=> {
                 </Link>
     <br /> 
 
-    <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
+    <Link to="/Mostrar_componentes/cancrosis" className="col-4" target="blank"> 
             <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
              >
                Cancrosis de los cítricos 
@@ -59,7 +59,7 @@ export const Menu_Citricos=()=> {
     <br /> 
 
 
-    <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
+    <Link to="/Mostrar_componentes/mancha_negra" className="col-4" target="blank"> 
             <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
              >
              Mancha Negra
@@ -68,21 +68,18 @@ export const Menu_Citricos=()=> {
                 </Link>
     <br /> 
 
-    <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
-            <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
-             >Cochinilla de los Cítricos
-
+    <Link to="/Mostrar_componentes/cochinilla" className="col-4" target="blank"> 
+            <button className="btn btn-lg btn-warning btn-block m-3" type="texto" >
+               Cochinilla de los Cítricos
              </button>
                 </Link>
     <br /> 
 
  
-    <Link to="/Mostrar_componentes" className="col-4" target="blank"> 
+    <Link to="/Mostrar_componentes/hlb" className="col-4" target="blank"> 
             <button className="btn btn-lg btn-warning btn-block m-3" type="texto" 
              >
-               HLB HuangLongBing La enfermedad más peligrosa para los cítricos,<br/>
-
-               ya que no tiene cura. Sí, se puede prevenir. 
+               HLB HuangLongBing <br/>
 
              </button>
                 </Link>

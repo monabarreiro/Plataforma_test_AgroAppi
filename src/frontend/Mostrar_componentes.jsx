@@ -5,9 +5,6 @@ var Titulo = " ";
 var Descripcion = " ";
 import { useParams } from 'react-router-dom';
 
-
-
-
 export const Mostrar_componentes= () =>{
     const [datos, setData] = useState([]);
     const [descripcion, setDescripcion] = useState([]);
@@ -23,9 +20,9 @@ export const Mostrar_componentes= () =>{
             // Extraer y mostrar el campo 'titulo'
            
             Titulo = docSnap.data().Titulo;
-            setData(Titulo);
+            setData(Titulo ||"");
             Descripcion= docSnap.data().a
-            setDescripcion(Descripcion);
+            setDescripcion(Descripcion ||"");
 
             // Actualizar la UI si es necesario
             // document.getElementById("titulo").innerText = docSnap.data().titulo;
