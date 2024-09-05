@@ -50,20 +50,7 @@ const Lista_cultivos =() => {
           </div>
         ))}
         </div>
-      <h1 className= "text-center">
-                    Cultivos Referentes de Argentina
-                    </h1>
-                    <img src={img14} alt="" width={"100px"} />
-
-  <div className="row align-items-start" style ={{backgroundColor:"#FEFAE0"}} >
-  <Prueba className="col-4" nombre = " Limón "i="0"/>
-  <Prueba className="col-4" nombre = " Maíz " i="1"/>
-  </div>
-
-  <div className=" row align-items-start"style ={{backgroundColor:"#FEFAE0"}}>
-  <Prueba className="col-4" nombre = " Uva "  i="2"/>
-  <Prueba className="col-4" nombre = " Trigo" i="3"/>
-  </div>
+      
 
      </div>
 )}

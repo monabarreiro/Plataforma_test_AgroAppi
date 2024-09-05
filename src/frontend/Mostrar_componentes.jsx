@@ -2,10 +2,9 @@ import {db} from '../backend/firebase';
 import { useState,useEffect } from 'react'; 
 import{getDocs, collection} from "firebase/firestore";
 import "./mostrar_componentes.css";
-
-
-var Descripcion = " ";
+import img14 from "../img/logoagroappi.png";
 import { useParams } from 'react-router-dom';
+var Descripcion ;
 
 export const Mostrar_componentes= () =>{
     const [datos, setData] = useState([]);
@@ -32,11 +31,14 @@ export const Mostrar_componentes= () =>{
                 cultivosList.forEach((cultivo) => {
                  if (cultivo.Titulo==id){
                    TituloEnfermedad=cultivo.Titulo;
-                   setData(TituloEnfermedad ||""); //quiere decir que en caso que no encuente
+                   setData(TituloEnfermedad ||""); //quiere decir que en caso que no encuentre
                    //el TituloEnfermedad va a ser un string vacío (or)||.
                    Descripcion=cultivo.a
+                   if (cultivo.arraImg!=undefined){
                   setArrayImg(cultivo.arrayImg ||"");
-        
+                  console.log(cultivo.arrayImg);
+                   }
+                  
                    setDescripcion(Descripcion ||"");
                  }
                 });
@@ -53,21 +55,21 @@ export const Mostrar_componentes= () =>{
    
     }, []);
    return (<div>
-
+<img src={img14} alt="" />
 <h1>
    {datos} 
 </h1>
 <p>
 {descripcion}
 </p>
-{ arrayImg.map((cultivo, index) => (
+{  
+arrayImg.map((cultivo, index) => (
           <div key={index} className="float-right" target="blank"> 
            
 <img src={cultivo} className="mx-auto"/>
    
-
 </div>
 ))}
-<img src={"https://herbariofitopatologia.agro.uba.ar/wp-content/uploads/2016/03/Huang-et-al-2013-truncatum.jpg?v=1627993886"} className="float-right"/>
+
    </div> )
 }

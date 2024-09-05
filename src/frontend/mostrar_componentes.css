@@ -8,11 +8,12 @@ div{
 p{
     text-align: center;
     font-size: 16px;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
-    padding-left:20px;
-    padding-right: 20px;
+    padding-left:50px;
+    padding-right: 50px;
     display: flex;
+    text-justify: auto;
     
 
 }
