@@ -25,6 +25,7 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+
 }
 
 li a:hover {
@@ -34,3 +35,35 @@ li a:hover {
 .active {
   background-color: #4CAF50;
 }
+input {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  float:left;
+  margin: 140px 16px;
+  border:1px solid #cccccc;
+  border-radius:36px;
+  display:inline-block;
+  overflow:hidden;
+  background:#cccccc;
+}
+select {
+
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border:1px solid #cccccc;
+  border-radius:36px;
+  display:inline-block;
+  overflow:hidden;
+  background:#cccccc;
+  margin: 14px 16px;
+  
+}
+img{
+  float:left;
+}
+
+
