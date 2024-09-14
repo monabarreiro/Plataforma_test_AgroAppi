@@ -20,6 +20,8 @@ import "./Main.css";
 import img14 from "./img/logoagroappi.png";
 import{Mostrar_componentes} from "./frontend/Mostrar_componentes";
 import {Menu} from "./frontend/Menu";
+import { Checkout } from './frontend/Checkout'; 
+import {App} from './frontend/App';
 
 
 // esto va a contener todos los componentes
@@ -50,7 +52,7 @@ const Lista_cultivos =() => {
           </div>
         ))}
         </div>
-      
+       
 
      </div>
 )}
@@ -76,6 +78,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Mostrar_componentes/:id/:cultivos" element={<Mostrar_componentes />} />
         <Route path="/Pagina_admin/" element={<Pagina_admin />} />
         <Route path="/Menu/:id" element={<Menu />} />
+        <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/App" element={<App />} />
+
         
 
       </Routes> 
