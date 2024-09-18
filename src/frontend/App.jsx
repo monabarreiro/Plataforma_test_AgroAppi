@@ -9,7 +9,7 @@ import { SpinnerCircular } from 'spinners-react';
 // REPLACE WITH YOUR PUBLIC KEY AVAILABLE IN: https://developers.mercadopago.com/panel
 initMercadoPago("TEST-5fe51784-83ee-4dd4-b6d8-24c054cb9966");
 
-const App = () => {
+export const App = () => {
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [orderData, setOrderData] = useState({ quantity: "1", price: "10", amount: 10, description: "Some book" });

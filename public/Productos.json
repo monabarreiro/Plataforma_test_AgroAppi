@@ -1,0 +1,12 @@
+
+
+ {
+    "nombre": "antimicotico",
+    "marca": "Bayer",
+    "descripcion": "XXXXXX",
+    "precio": 300,
+    "img": "https://example.com/antimicotico.jpg",
+    "cantidad": 1
+    
+  
+}

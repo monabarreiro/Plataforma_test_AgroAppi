@@ -19,7 +19,7 @@ app.post('/process_payment', async (req, res) => {
       installments: req.body.installments,
       payment_method_id: req.body.payment_method_id,
       payer: {
-        email: req.body.email,
+      email: req.body.email,
       },
     };
 
