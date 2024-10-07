@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import{getDocs, collection} from "firebase/firestore";
 import "./mostrar_componentes.css";
 import img14 from "../img/logoagroappi.png";
+import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 var Descripcion ;
 
@@ -60,6 +61,7 @@ export const Mostrar_componentes= () =>{
    {datos} 
 </h1>
 <p>
+
 {descripcion}
 </p>
 {  
@@ -70,6 +72,6 @@ arrayImg.map((cultivo, index) => (
    
 </div>
 ))}
-
+<Link to="/DashboardCompra"> <a className="active" href="#"> COMPRAR </a></Link>
    </div> )
 }

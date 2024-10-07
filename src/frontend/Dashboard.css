@@ -1,0 +1,28 @@
+img{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    float:none;
+
+ 
+}
+
+button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #7c9e39;
+    color: rgb(30, 24, 24);
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+

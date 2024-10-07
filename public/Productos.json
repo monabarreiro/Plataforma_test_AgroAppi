@@ -1,12 +1,27 @@
 
-
- {
-    "nombre": "antimicotico",
+{"array":
+ [{
+    "nombre": "Antimicótico",
+    "marca": "Bayer",
+    "descripcion": "XXXXXX",
+    "precio": 300,
+    "img": "https://www.finvian.com/vista/imagen/producto/fa_1656775882163_aoea9yonxbvvsyr.png",
+    "cantidad": 1,
+    "linkMercadoLibre":"https://articulo.mercadolibre.com.ar/MLA-1173362257-fungicida-aliette-1kg-80-sistemico-bayer-polvo-mojable-_JM#polycard_client=search-nordic&position=25&search_layout=grid&type=item&tracking_id=cebcd0c9-c7bb-4a19-b4e9-326018c9a01b"
+    
+  
+}, 
+{
+    "nombre": "Antimicótico",
     "marca": "Bayer",
     "descripcion": "XXXXXX",
     "precio": 300,
     "img": "https://example.com/antimicotico.jpg",
-    "cantidad": 1
+    "cantidad": 1,
+    "linkMercadoLibre":"https://articulo.mercadolibre.com.ar/MLA-1173362257-fungicida-aliette-1kg-80-sistemico-bayer-polvo-mojable-_JM#polycard_client=search-nordic&position=25&search_layout=grid&type=item&tracking_id=cebcd0c9-c7bb-4a19-b4e9-326018c9a01b"
+    
+  
     
   
 }
+]}
