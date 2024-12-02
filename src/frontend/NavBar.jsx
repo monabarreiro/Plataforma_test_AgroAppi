@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./navBar.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import img13 from "../img/logoagroappi.png";
+import img13 from "../img/logo.png";
 
 export const NavBar=( )=>{
    const [searchTerm, setSearchTerm] = useState('');

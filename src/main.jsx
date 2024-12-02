@@ -17,7 +17,7 @@ import {Menu_Maiz}from './frontend/Menu_Maiz';
 import {Menu_Trigo}from './frontend/Menu_Trigo';
 import {Menu_Uva}from './frontend/Menu_Uva';
 import "./Main.css";
-import img14 from "./img/logoagroappi.png";
+import img14 from "./img/logo.png";
 import{Mostrar_componentes} from "./frontend/Mostrar_componentes";
 import {Menu} from "./frontend/Menu";
 import { DashboardCompra } from './frontend/DashboardCompra';

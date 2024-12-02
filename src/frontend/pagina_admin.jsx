@@ -3,9 +3,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { useState } from "react";
 import Swal from "sweetalert2";[useState];
 import {getDocs } from 'firebase/firestore';
-import {ref} from 'firebase/database';
 import {useEffect} from'react';
-
 
 export const Pagina_admin = ()=>{
   

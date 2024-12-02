@@ -9,7 +9,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #0ba127;
+  background-color: #050a06;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
@@ -33,7 +33,7 @@ li a:hover {
 }
 
 .active {
-  background-color: #4CAF50;
+  background-color: #0a150a;
 }
 input {
   display: block;
