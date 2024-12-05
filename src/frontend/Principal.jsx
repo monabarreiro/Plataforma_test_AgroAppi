@@ -8,8 +8,14 @@ export const Principal =()=>{
 
     return(
 
-        <div style={{backgroundImage:`url(${img})`,float:"left",
-        minheight: "100% ", height:"100%",backgroundSize:"100% 100%", 
+        <div style={{backgroundImage:`url(${img})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+       
+
+
         
        }}>  
         {/* para incorporar una foto de bacground*/}
@@ -22,7 +28,7 @@ export const Principal =()=>{
               <br />
 
             <div className= "d-flex flex-column align-items-start text-white p-5"> 
-               <h2 className= "m-3 text-white" > Bienvenidos a la App de Cultivos </h2> 
+               <h2 className= "m-3 text-white" style={{textShadow: "2px 2px #000000"}} > Bienvenidos a la App de Cultivos </h2> 
       
 
                <Link to = "/Register" className= "">

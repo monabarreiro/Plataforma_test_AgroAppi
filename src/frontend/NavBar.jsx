@@ -32,11 +32,12 @@ export const NavBar=( )=>{
     return (<div>
 
 <ul>
-  <li> <Link to="/"> <a className="active" href="#logut">Logout</a></Link>
+
+  <li> <Link to="/Contacto"> <a className="active" href="#logut">Contacto</a></Link>
   </li> 
-  <li> <Link to="/login" >  <a href="#register">Login</a></Link>  </li>
-  <li> <Link to="/register" >  <a href="#login">Register</a></Link>  </li>
-  <li> <Link to="/" > <a href="#principal">Principal</a> </Link> </li>
+  <li> <Link to="/Menu/Limón" >  <a href="#menu_limon">Enfermedades</a></Link>  </li>
+  <li> <Link to="/Lista_cultivos" >  <a href="#login"> Cultivos</a></Link>  </li>
+  <li> <Link to="/" > <a href="#principal">Sobre AgroAppi</a> </Link> </li>
 
   <li> <input type= "text"onChange={handleChange} value={searchTerm} 
    onKeyPress={handleEnter} /> </li>
@@ -74,7 +75,12 @@ export const NavBar=( )=>{
 
    </select>
       </li>  
-      <img src={img13} className="float-left" alt="" width={"20px"} /> 
+      <div className = "d-flex flex-column align-items-start text-white">
+      <img src={img13} className="float-left" alt="" width={"20px"}/> 
+       <p>
+        AGROAPPI
+       </p>
+       </div>
 </ul>
 
 

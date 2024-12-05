@@ -21,6 +21,7 @@ import img14 from "./img/logo.png";
 import{Mostrar_componentes} from "./frontend/Mostrar_componentes";
 import {Menu} from "./frontend/Menu";
 import { DashboardCompra } from './frontend/DashboardCompra';
+import { Contacto } from './frontend/Contacto';
 
 
 import {App} from './frontend/App';
@@ -82,6 +83,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Menu/:id" element={<Menu />} />
         <Route path="/App" element={<App />} />
         <Route path="/DashboardCompra" element={<DashboardCompra />} />
+        <Route path="/Contacto" element={<Contacto />} />
         
 
         
