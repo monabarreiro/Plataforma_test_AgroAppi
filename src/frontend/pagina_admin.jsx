@@ -4,6 +4,9 @@ import { useState } from "react";
 import Swal from "sweetalert2";[useState];
 import {getDocs } from 'firebase/firestore';
 import {useEffect} from'react';
+import { NavBar } from "./NavBar";  
+import "./pagina_admin.css";
+
 
 export const Pagina_admin = ()=>{
   
@@ -108,6 +111,8 @@ export const Pagina_admin = ()=>{
    // crearCultivo("cultivos");
     return(
         <div>
+           <NavBar className="navBar"/>
+       
     
         <div className= "bg-dark">
             <h3 className="mt-4 "> Crear cultivo</h3>

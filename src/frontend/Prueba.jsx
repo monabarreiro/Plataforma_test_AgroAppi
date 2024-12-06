@@ -5,6 +5,7 @@ import img2 from "../img/maiz.jpg";
 import img3 from "../img/uva.jpg";
 import img4 from "../img/trigo.jpg";
 
+
 import "../Main.css";
 
 

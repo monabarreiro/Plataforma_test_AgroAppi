@@ -29,7 +29,8 @@ export const NavBar=( )=>{
        handleSearch();
      }
    }
-    return (<div>
+    return (
+<div>
 
 <ul>
 
@@ -39,11 +40,11 @@ export const NavBar=( )=>{
   <li> <Link to="/Lista_cultivos" >  <a href="#login"> Cultivos</a></Link>  </li>
   <li> <Link to="/" > <a href="#principal">Sobre AgroAppi</a> </Link> </li>
 
-  <li> <input type= "text"onChange={handleChange} value={searchTerm} 
+  <li> <input style={{ marginTop:"15px"}} type= "text"onChange={handleChange} value={searchTerm} 
    onKeyPress={handleEnter} /> </li>
 
    <li>
-    <select onChange={
+    <select hidden onChange={
     (e) => setSearchBy(e.target.value)  
 
     // se selecciona por cultivo o enfermedad  
@@ -63,7 +64,7 @@ export const NavBar=( )=>{
    
     </li>
     <li>
-    <select  onChange={
+    <select hidden onChange={
     (e) => handleChange2(e.target.value)  
   } > 
 
@@ -76,9 +77,9 @@ export const NavBar=( )=>{
    </select>
       </li>  
       <div className = "d-flex flex-column align-items-start text-white">
-      <img src={img13} className="float-left" alt="" width={"20px"}/> 
-       <p>
-        AGROAPPI
+      <img style={{position:"fixed", left:"150px"}} src={img13} className="float-left" alt="" width={"20px"}/> 
+       <p style={{left:"100px", marginTop:"60px", position:"fixed"}}>
+        AgroAppi
        </p>
        </div>
 </ul>

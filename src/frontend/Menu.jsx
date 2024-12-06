@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import { db } from "../backend/firebase";
 import { getDocs,collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { NavBar } from "./NavBar";
 
  
 export const Menu=()=> {
@@ -68,7 +69,8 @@ const filteredCultivosList = cultivosList.filter(cultivo => cultivo.cultivo == i
   }, []);  // para que refresque componentes en tiempo real son los corchetes 
 
     return (
-        <div className="container">
+        <div className="">
+           <NavBar/>  {/* para que aparezca el navbar */}
 
             <div> 
                 <h2 className= "m-3">

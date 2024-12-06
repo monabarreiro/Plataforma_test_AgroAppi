@@ -22,7 +22,11 @@ import{Mostrar_componentes} from "./frontend/Mostrar_componentes";
 import {Menu} from "./frontend/Menu";
 import { DashboardCompra } from './frontend/DashboardCompra';
 import { Contacto } from './frontend/Contacto';
-
+import limones from './frontend/videos/limones.mp4';
+import maiz from './frontend/videos/maiz2.mp4';
+import uva from './frontend/videos/uva.mp4';
+import trigo from './frontend/videos/trigo.mp4';
+import soja from './frontend/videos/soja2.mp4';
 
 import {App} from './frontend/App';
 
@@ -45,8 +49,28 @@ const Lista_cultivos =() => {
  
   return (
 
-    <div className= "container">
+    <div className= "">
       <NavBar/>
+      <video autoPlay muted loop width="100%"> 
+        <source src={limones} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <video autoPlay muted loop width="100%"> 
+        <source src={maiz} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <video autoPlay muted loop width="100%"> 
+        <source src={soja} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <video autoPlay muted loop width="100%"> 
+        <source src={trigo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <video autoPlay muted loop width="100%"> 
+        <source src={uva} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <div className="row align-items-start">
       { cultivos.map((cultivo, index) => (
           <div key={index} className="col-6 ">

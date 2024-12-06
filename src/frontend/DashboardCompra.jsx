@@ -1,5 +1,7 @@
 import  { useEffect, useState } from 'react';
 import "./Dashboard.css";
+import { NavBar} from './NavBar';
+
 
 export const DashboardCompra = () => {
   const [jsonContent, setJsonContent] = useState(null);// contenido de jason en esta var
@@ -50,6 +52,8 @@ export const DashboardCompra = () => {
 
   return (
     <div className= "row align-items-start">
+      <NavBar/>
+    
   { jsonContent.array.map((soluciones,index) => (
     <div className= "col-3" key={index}>
       <h3>{SacarComillas(JSON.stringify(soluciones.nombre, null)) }</h3> {/* pasa de json a String*/}

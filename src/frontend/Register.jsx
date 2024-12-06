@@ -38,7 +38,7 @@ import img12 from "../img/logoagroappi.png";
   // Formulario para completar
     return(
      
-      <div className="container">
+      <div className="">
       <NavBar/>
         <img src={img12} alt="" width={"100px"} />
 
