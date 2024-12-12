@@ -12,10 +12,11 @@ ul {
   overflow: hidden;
   background-color: #050a06;
   position: -webkit-sticky; /* Safari */
-  position: sticky;
+  position: fixed;
   top: 0;
   background-size:'cover';
   width:100%;
+  
 }
 
 li {
@@ -47,6 +48,8 @@ input {
   display:inline-block;
   overflow:hidden;
   background:#cccccc;
+  z-index: 20;
+  opacity:1;
 }
 select {
 

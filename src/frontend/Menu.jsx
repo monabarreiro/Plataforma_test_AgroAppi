@@ -71,6 +71,9 @@ const filteredCultivosList = cultivosList.filter(cultivo => cultivo.cultivo == i
     return (
         <div className="">
            <NavBar/>  {/* para que aparezca el navbar */}
+           <br />
+           <br />
+           <br />
 
             <div> 
                 <h2 className= "m-3">

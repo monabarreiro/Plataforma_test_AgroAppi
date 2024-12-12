@@ -112,6 +112,9 @@ export const Pagina_admin = ()=>{
     return(
         <div>
            <NavBar className="navBar"/>
+           <br />
+           <br />
+           <br />
        
     
         <div className= "bg-dark">
@@ -156,13 +159,12 @@ export const Pagina_admin = ()=>{
       <th scope="col">Nombre Cultivo</th>
       <th scope="col">Nombre de la enfermedad</th>
       <th scope="col">Descripción de enfermedad</th>
-      <th scope="col">url de fotos</th>
-      <th scope="col">Soluciones Agroquimicas</th>
-      <th scope="col">Soluciones Biológicas</th>
-      <th scope="col">botones</th>
+      <th scope="col">URL de Imágenes</th>
+      <th scope="col">Botones</th>
     </tr>
   </thead>
   <tbody>
+
     <tr>
      
       <td><input type="text"
@@ -181,28 +183,21 @@ export const Pagina_admin = ()=>{
                 placeholder="Descripción de enfermedad"
                 value={a}
                 onChange={(e) => setA(e.target.value)} ></input></td>
+
 <td>     {arrayImg.map((link, index) => (
         <div key={index}>
+
           <input
             type="url"
             value={link}
             onChange={(event) => handleArray(index,event)}
-            required
+            style={{marginLeft:"20px"}}
+         
           />
         </div>
-      ))}     </td>
-<td><input type="text"
-                placeholder="Solución Agroquímica"
-                value={agroquimicas}
-                onChange={(e) => setAgroquimicas(e.target.value)} >
+      ))}  </td>
 
-                </input></td>
-                <td><input type="text"
-                placeholder="Solución Biológica"
-                value={biologicas}
-                onChange={(e) => setBiologicas(e.target.value)} >
 
-                </input></td>
 
 <td>     <button onClick={aniadirLink}>
   Añadir Fotos
@@ -212,6 +207,52 @@ export const Pagina_admin = ()=>{
 </button></td>
     </tr>
     </tbody>  
+
+    <th scope="col">Soluciones Agroquimicas</th>
+    <th scope="col">Soluciones Biológicas</th>
+    <th scope="col">URL de Imágenes</th>
+    <th scope="col">Botones</th>
+
+    <tbody>
+
+<tr>
+ 
+  
+
+<td><input type="text"
+            placeholder="Solución Agroquímica"
+            value={agroquimicas}
+            onChange={(e) => setAgroquimicas(e.target.value)} >
+
+            </input></td>
+            <td><input type="text"
+            placeholder="Solución Biológica"
+            value={biologicas}
+            onChange={(e) => setBiologicas(e.target.value)} >
+
+            </input></td>
+                
+<td>     {arrayImg.map((link, index) => (
+        <div key={index}>
+          <input
+            type="url"
+            value={link}
+            onChange={(event) => handleArray(index,event)}
+           
+          />
+        </div>
+      ))}     </td>
+
+<td>     <button onClick={aniadirLink}>
+Añadir Fotos
+</button>
+<button onClick={()=> crearEnfermedad(cultivo2,enfermedad,a,arrayImg)}>
+Crear enfermedad
+</button></td>
+</tr>
+</tbody>  
+
+
 </table>
 <div className="bg-dark">
 
@@ -227,6 +268,7 @@ export const Pagina_admin = ()=>{
       <th scope="col">Borrar Cultivo</th>
     </tr>
   </thead>
+
   <tbody>
     
     {listadoCultivos.map((point, index) => {
