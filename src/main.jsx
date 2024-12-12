@@ -17,7 +17,6 @@ import {Menu_Maiz}from './frontend/Menu_Maiz';
 import {Menu_Trigo}from './frontend/Menu_Trigo';
 import {Menu_Uva}from './frontend/Menu_Uva';
 import "./Main.css";
-import img14 from "./img/logo.png";
 import{Mostrar_componentes} from "./frontend/Mostrar_componentes";
 import {Menu} from "./frontend/Menu";
 import { DashboardCompra } from './frontend/DashboardCompra';
@@ -29,6 +28,7 @@ import trigo from './frontend/videos/trigo.mp4';
 import soja from './frontend/videos/soja2.mp4';
 
 import {App} from './frontend/App';
+import { Link } from "react-router-dom";
 
 
 // esto va a contener todos los componentes
@@ -51,26 +51,41 @@ const Lista_cultivos =() => {
 
     <div className= "">
       <NavBar/>
+      < Link to="/Menu/Limon" style={{textDecoration:"none", fontSize:"40px", color:"black"}}> 
+       <h1 className= "m-3 text-black" style={{position:"relative"}} /> 
+      Cítricos  <h1/> </Link>
       <video autoPlay muted loop width="100%"> 
         <source src={limones} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      < Link to="/Menu/Maiz" style={{textDecoration:"none", fontSize:"40px", color:"black"}}>
+      <h1 className= "m-3 text-black" style={{position:"relative"}} > 
+        Maíz </h1> </Link>
       <video autoPlay muted loop width="100%"> 
         <source src={maiz} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      < Link to="/Menu/Soja" style={{textDecoration:"none", fontSize:"40px", color:"black"}}>
+      <h1 className= "m-3 text-black" style={{position:"relative"}} > 
+        Soja  </h1> </Link>
       <video autoPlay muted loop width="100%"> 
         <source src={soja} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      < Link to="/Menu/Trigo" style={{textDecoration:"none", fontSize:"40px", color:"black"}}>
+      <h1 className= "m-3 text-black" style={{position:"relative"}} > 
+       Trigo </h1> </Link>
       <video autoPlay muted loop width="100%"> 
         <source src={trigo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      < Link to="/Menu/Uva" style={{textDecoration:"none", fontSize:"40px", color:"black"}}>
+      <h1 className= "m-3 text-black" style={{position:"relative"}} > Uva </h1> </Link>
       <video autoPlay muted loop width="100%"> 
         <source src={uva} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+{/* 
       <div className="row align-items-start">
       { cultivos.map((cultivo, index) => (
           <div key={index} className="col-6 ">
@@ -79,7 +94,7 @@ const Lista_cultivos =() => {
           </div>
         ))}
         </div>
-       
+      */} 
 
      </div>
 )}
