@@ -20,6 +20,10 @@ export const Pagina_admin = ()=>{
     const [idCultivo, setIdCultivo] = useState("");
     const [agroquimicas,setAgroquimicas] = useState("");
     const [biologicas,setBiologicas] = useState("");
+    const [enfermedades,setEnfermedades] = useState([]); // para definir el array
+    const [seleccionarEnfermedad, setSeleccionarEnfermedad]= useState("");
+    const [valor, setValor] = useState(""); // para definir el valor
+
     const ModificarCultivo=(id)=>{
       useEffect(() => {  // aca tenemos que seguir trabajando 
         // porque no funciona el modificador desde el administrador
@@ -105,8 +109,43 @@ export const Pagina_admin = ()=>{
       Swal.fire({icon:"success", title:"Enfermedad agregada con éxito"});
       
     };
+    const buscarImg2 = async () => {
+      try {
+        var temp =removeAccents('bd_enfermedades_' + seleccionarEnfermedad.toLowerCase());
+          {/* setTextoFiltrado(temp);*/}
+      
+          const querySnapshot = await getDocs(collection(db,temp));
+          
+          if (!querySnapshot.empty) {
+              const cultivosList = querySnapshot.docs.map(doc => doc.data());
+  
+              // Verifica que cultivosList no esté vacío
+              // Borrar array y pushear todas las enfermedades 
+              setEnfermedades([]);
+              cultivosList.forEach((cultivo) => {
+                console.log(enfermedades);
+                console.log(cultivo);
+                setEnfermedades((enfermedades2) => [...enfermedades2,cultivo.Titulo]);
+              });
+              
+          } else {
+              console.log('No se encontraron documentos en la colección $ {textoFiltrado}');
+          }
+      } catch (error) {
+          console.error("Error al buscar documentos:", error);
+      }
+  };
+  buscarImg2();
 
+ 
+  const CambioDeCultivo=(event)=>{
+    setValor(event.target.value);
 
+    var value = event.target.value;
+    setSeleccionarEnfermedad(removeAccents(value));
+    buscarImg2();
+
+  }
 
    // crearCultivo("cultivos");
     return(
@@ -152,6 +191,7 @@ export const Pagina_admin = ()=>{
 </div>
 
 <h3 className="mt-5">Crear Enfermedad</h3>
+
 <table className="table">
   <thead className="thead-dark">
     <tr>
@@ -254,10 +294,13 @@ Crear enfermedad
 
 
 </table>
+
+
 <div className="bg-dark">
 
             <h3 className="mt-5"> Visualizar Cultivos </h3>
       <div className= "m-4 ">
+
  <table className="table table-dark">
      
   <thead className="thead-dark">
@@ -282,6 +325,48 @@ Crear enfermedad
            }
           } data-toggle="modal" data-target=".bd-edit-modal-lg" 
             >Modificar Cultivo</button></td>
+
+      <td><button type="button" className="btn btn-success"
+             data-toggle="modal" data-target=".bd-crite-modal-lg" 
+            >Borrar</button></td>
+    </tr>
+            
+        })
+    }
+  </tbody>
+</table>
+
+<select name=" " id =" " value={valor} onChange={(event) => CambioDeCultivo(event)}>
+  <option value="">Todos los Cultivos</option>
+  {listadoCultivos.map((cultivo, index) => (
+          <option key={index} value={cultivo}>{cultivo}</option>
+        ))}
+</select>
+
+ <table className="table table-dark">
+     
+  <thead className="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre de la Enfermedad </th>
+      <th scope="col">Modificar Enfermedad </th>
+      <th scope="col">Borrar Enfermedad</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    {enfermedades.map((point, index) => {
+            return <tr key={index}>
+      <th scope="row">{index}</th>
+      <td><h2>{point.charAt(0).toUpperCase() + point.slice(1)}</h2></td>
+
+      <td><button type="button" className="btn btn-primary" 
+            onClick={() => {
+              ModificarCultivo(idCultivo[index]);
+           }
+          } data-toggle="modal" data-target=".bd-edit-modal-lg" 
+            >Modificar Enfermedad </button></td>
 
       <td><button type="button" className="btn btn-success"
              data-toggle="modal" data-target=".bd-crite-modal-lg" 
