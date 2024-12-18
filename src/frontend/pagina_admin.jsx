@@ -6,6 +6,9 @@ import {getDocs } from 'firebase/firestore';
 import {useEffect} from'react';
 import { NavBar } from "./NavBar";  
 import "./pagina_admin.css";
+import {ref, remove} from "firebase/database";
+import {doc, deleteDoc} from "firebase/firestore";
+
 
 
 export const Pagina_admin = ()=>{
@@ -39,6 +42,13 @@ export const Pagina_admin = ()=>{
     }, []);  // 
     } ;
 
+    const BorrarCultivo= async(cultivos)=>{ // selectivamente es asyncronico
+      try {
+        await deleteDoc(doc(db, 'cultivos', cultivos));
+      } catch (error) {console.log(error); 
+        
+      }
+    }
 
     const aniadirLink = ()=>{
         setArrayImg([...arrayImg,""]);
@@ -112,7 +122,7 @@ export const Pagina_admin = ()=>{
     const buscarImg2 = async () => {
       try {
         var temp =removeAccents('bd_enfermedades_' + seleccionarEnfermedad.toLowerCase());
-          {/* setTextoFiltrado(temp);*/}
+         
       
           const querySnapshot = await getDocs(collection(db,temp));
           
@@ -135,17 +145,19 @@ export const Pagina_admin = ()=>{
           console.error("Error al buscar documentos:", error);
       }
   };
-  buscarImg2();
 
- 
   const CambioDeCultivo=(event)=>{
     setValor(event.target.value);
 
     var value = event.target.value;
     setSeleccionarEnfermedad(removeAccents(value));
-    buscarImg2();
+   
+    
 
   }
+  useEffect(() => {
+    buscarImg2();
+}, [seleccionarEnfermedad])
 
    // crearCultivo("cultivos");
     return(
@@ -321,13 +333,14 @@ Crear enfermedad
 
       <td><button type="button" className="btn btn-primary" 
             onClick={() => {
-              ModificarCultivo(idCultivo[index]);
+              ModificarCultivo(point);
            }
           } data-toggle="modal" data-target=".bd-edit-modal-lg" 
             >Modificar Cultivo</button></td>
 
       <td><button type="button" className="btn btn-success"
-             data-toggle="modal" data-target=".bd-crite-modal-lg" 
+             data-toggle="modal" data-target=".bd-crite-modal-lg"
+             onClick={ ()=>{BorrarCultivo(point)}} 
             >Borrar</button></td>
     </tr>
             
