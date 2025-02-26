@@ -1,6 +1,6 @@
 import { useState } from "react"; 
 import "./navBar.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import img13 from "../img/logo.png";
 
@@ -36,7 +36,20 @@ export const NavBar=( )=>{
 
   <li> <Link to="/Contacto"> <a className="active" href="#logut">Contacto</a></Link>
   </li> 
-  <li> <Link to="/Menu/Limón" >  <a href="#menu_limon">Enfermedades</a></Link>  </li>
+  <li>
+    <select onChange={
+    (e) => navigate(e.target.value)  
+  } > 
+    <option value="/Lista_cultivos">Enfermedades</option>
+    <option value="/Menu/Limon">Limón</option>
+    <option value="/Menu/Maiz">Maíz</option>
+    <option value="/Menu/Soja">Soja</option>
+    <option value="/Menu/Trigo">Trigo</option>
+    <option value="/Menu/Uva">Uva</option>
+
+   </select>
+      </li> 
+
   <li> <Link to="/Lista_cultivos" >  <a href="#login"> Cultivos</a></Link>  </li>
   <li> <Link to="/" > <a href="#principal">Sobre AgroAppi</a> </Link> </li>
 

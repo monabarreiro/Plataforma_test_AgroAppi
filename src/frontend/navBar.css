@@ -34,6 +34,7 @@ li a {
 
 li a:hover {
   background-color: #cbe829;
+
 }
 
 input {
@@ -55,15 +56,18 @@ select {
 
   display: block;
   text-align: center;
-  padding: 14px 16px;
+padding: 29px 16px;
+
   text-decoration: none;
-  border:1px solid #cccccc;
-  border-radius:36px;
+  color: white;
   display:inline-block;
   overflow:hidden;
-  background:#cccccc;
-  margin: 14px 16px;
+  background-color: #050a06;
+  margin: auto!important;
   
+}
+select:hover{
+  background-color: #cbe829;
 }
 img{
   float:left;
