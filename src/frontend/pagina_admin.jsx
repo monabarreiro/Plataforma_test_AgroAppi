@@ -3,11 +3,16 @@ import { collection, addDoc } from 'firebase/firestore';
 import { useState } from "react";
 import Swal from "sweetalert2";[useState];
 import {getDocs } from 'firebase/firestore';
-import {useEffect} from'react';
+import {useEffect,useCallback} from'react';
 import { NavBar } from "./NavBar";  
 import "./pagina_admin.css";
 import {ref, remove} from "firebase/database";
 import {doc, deleteDoc} from "firebase/firestore";
+
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged,getAuth } from "firebase/auth";
+
+
 
 
 
@@ -27,6 +32,7 @@ export const Pagina_admin = ()=>{
     const [seleccionarEnfermedad, setSeleccionarEnfermedad]= useState("");
     const [valor, setValor] = useState(""); // para definir el valor
 
+    const navigate = useNavigate();
     const ModificarCultivo=(id)=>{
       useEffect(() => {  // aca tenemos que seguir trabajando 
         // porque no funciona el modificador desde el administrador
@@ -150,12 +156,28 @@ export const Pagina_admin = ()=>{
     setValor(event.target.value);
 
     var value = event.target.value;
-    setSeleccionarEnfermedad(removeAccents(value));
-   
-    
+    setSeleccionarEnfermedad(removeAccents(value));  
 
   }
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid;
+      // ...
+   if(uid !="LfpK9lXjaEOq06un9BcNdy20s6o2"){
+
+    alert("No tienes permisos para acceder a esta página");
+    navigate("/Lista_cultivos");
+   }
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
   useEffect(() => {
+
     buscarImg2();
 }, [seleccionarEnfermedad])
 
@@ -326,7 +348,7 @@ Crear enfermedad
 
   <tbody>
     
-    {listadoCultivos.map((point, index) => {
+    {idCultivo.map((point, index) => {
             return <tr key={index}>
       <th scope="row">{index}</th>
       <td><h2>{point.charAt(0).toUpperCase() + point.slice(1)}</h2></td>
@@ -340,6 +362,7 @@ Crear enfermedad
 
       <td><button type="button" className="btn btn-success"
              data-toggle="modal" data-target=".bd-crite-modal-lg"
+             value={point}
              onClick={ ()=>{BorrarCultivo(point)}} 
             >Borrar</button></td>
     </tr>

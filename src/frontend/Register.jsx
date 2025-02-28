@@ -3,6 +3,8 @@ import { NavBar } from './NavBar';
 import {app} from '../backend/firebase';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 import img12 from "../img/logoagroappi.png";
 
@@ -21,6 +23,7 @@ import img12 from "../img/logoagroappi.png";
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   console.log(error);
+  const navigate = useNavigate();
 
   const auth = getAuth(app);
     
@@ -30,6 +33,8 @@ import img12 from "../img/logoagroappi.png";
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       alert('User created successfully!');
+      navigate("/Login");
+
     } catch (error) {
       setError(error.message);
     } 
