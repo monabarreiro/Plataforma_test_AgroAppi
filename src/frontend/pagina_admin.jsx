@@ -6,12 +6,12 @@ import {getDocs } from 'firebase/firestore';
 import {useEffect,useCallback} from'react';
 import { NavBar } from "./NavBar";  
 import "./pagina_admin.css";
-import {ref, remove} from "firebase/database";
-import {doc, deleteDoc} from "firebase/firestore";
-
+import {set,ref} from "firebase/database";
+import {doc,deleteDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged,getAuth } from "firebase/auth";
 
+import{ref as sRef} from "firebase/storage";
 
 
 
@@ -33,24 +33,36 @@ export const Pagina_admin = ()=>{
     const [valor, setValor] = useState(""); // para definir el valor
 
     const navigate = useNavigate();
-    const ModificarCultivo=(id)=>{
-      useEffect(() => {  // aca tenemos que seguir trabajando 
-        // porque no funciona el modificador desde el administrador
-
+    const ModificarCultivo= async (id)=>{
+     try {
       var cultivo = prompt("ingrese nombre de cultivo")
       var img = prompt("ingrese imagen")
-      const ref = ref(db,'cultivos/'+id);
-     ref.set({
-        cultivo:cultivo,
-        img:img
+      const CultivosRef = ref (db,'cultivos/'+ "Pirulo"); // esta harcodeado para probar funcion
+      
+      alert(CultivosRef); //no esta leyendo esta alert
+      await set(CultivosRef, { cultivo, img }) 
+      .then(() => {
+        alert("Modificado exitosamente");
+      })
+      .catch((error) => {
+        console.error("Error al modificar:", error);
+        alert("Error al modificar cultivo"+ error.message);
       });
-      alert("modificado exitosamente")
-    }, []);  // 
+     } catch (error) {
+      alert("Error al modificar cultivo" + error.message);
+     }
+      
     } ;
 
     const BorrarCultivo= async(cultivos)=>{ // selectivamente es asyncronico
       try {
-        await deleteDoc(doc(db, 'cultivos', cultivos));
+        if(prompt("Si desea borrar este cultivo escriba si")=="si"){
+          await deleteDoc(doc(db, 'cultivos', cultivos));  
+          alert("borrado exitosamente");
+        }
+      
+
+
       } catch (error) {console.log(error); 
         
       }
@@ -82,24 +94,29 @@ export const Pagina_admin = ()=>{
           const querySnapshot = await getDocs(collection(db,temp));
           
           if (!querySnapshot.empty) {
-              const cultivosList = querySnapshot.docs.map(doc => doc.data());
-  
+              const cultivosList = querySnapshot.docs.map(doc => ({
+                id: doc.id, 
+                ...doc.data()
+              }));
+   // console.log(cultivosList);
+  // cultivosList: nos devuelve un array de cultivos
               // Verifica que cultivosList no esté vacío
               // Borrar array y pushear todas las enfermedades
              setIdCultivo([]);
-                  querySnapshot.forEach(() => {
-                      // doc.data() is never undefined for query doc snapshots
-                      setIdCultivo((ListaCultivos) => [...ListaCultivos,cultivo.id]);
-                  });
-             
+                 
+
               setListadoCultivos([]);
               cultivosList.forEach((cultivo) => {
-              
-                setIdCultivo((ListaCultivos) => [...ListaCultivos,cultivo.id]);
+             
+               setIdCultivo((ListaCultivos) => [...ListaCultivos,cultivo.id]);
           
-                setListadoCultivos((ListaCultivos) => [...ListaCultivos,cultivo.cultivo]);
+              setListadoCultivos((ListaCultivos) => [...ListaCultivos,cultivo.cultivo]);
               });
-              
+
+             // const CultivosRef = sRef (db,'cultivos/'+ "Pirulo"); // esta harcodeado para probar funcion
+      // aca tenemos que copiar el id del db de firebase.
+            //  alert(CultivosRef); //no esta leyendo esta alert
+              //console.log(idCultivo);
           } else {
               console.log('No se encontraron documentos en la colección $ {textoFiltrado}');
           }
@@ -348,22 +365,23 @@ Crear enfermedad
 
   <tbody>
     
-    {idCultivo.map((point, index) => {
+    {listadoCultivos.map((point, index) => {
             return <tr key={index}>
       <th scope="row">{index}</th>
       <td><h2>{point.charAt(0).toUpperCase() + point.slice(1)}</h2></td>
 
-      <td><button type="button" className="btn btn-primary" 
-            onClick={() => {
-              ModificarCultivo(point);
+      <td><button type="button" className="btn btn-primary" value={idCultivo[index]}
+            onClick={(event) => {
+              ModificarCultivo(event.target.value);
            }
           } data-toggle="modal" data-target=".bd-edit-modal-lg" 
             >Modificar Cultivo</button></td>
 
       <td><button type="button" className="btn btn-success"
              data-toggle="modal" data-target=".bd-crite-modal-lg"
-             value={point}
-             onClick={ ()=>{BorrarCultivo(point)}} 
+             value={idCultivo[index]}
+
+             onClick={ (event)=>{BorrarCultivo(event.target.value)}} 
             >Borrar</button></td>
     </tr>
             
