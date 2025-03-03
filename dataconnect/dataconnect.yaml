@@ -1,0 +1,12 @@
+specVersion: "v1beta"
+serviceId: "plataformas-test"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "plataformas-test-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]
