@@ -8,7 +8,7 @@ const app = express();
 app.use(cors({ origin: true }));
 
 
-app.get('/Hello', (req, res) => {
+app.get('/hello', (req, res) => {
     res.send('Hello from Firebase!');
 }
 );
