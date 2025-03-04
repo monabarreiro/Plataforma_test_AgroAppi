@@ -6,7 +6,7 @@ import {getDocs } from 'firebase/firestore';
 import {useEffect,useCallback} from'react';
 import { NavBar } from "./NavBar";  
 import "./pagina_admin.css";
-import {set,ref} from "firebase/database";
+import {update,ref} from "firebase/database";
 import {doc,deleteDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged,getAuth } from "firebase/auth";
@@ -31,43 +31,47 @@ export const Pagina_admin = ()=>{
     const [enfermedades,setEnfermedades] = useState([]); // para definir el array
     const [seleccionarEnfermedad, setSeleccionarEnfermedad]= useState("");
     const [valor, setValor] = useState(""); // para definir el valor
-
+    const [idEnfermedad, setIdEnfermedad]= useState([]);
     const navigate = useNavigate();
     const ModificarCultivo= async (id)=>{
-     try {
+     
+      try {
       var cultivo = prompt("ingrese nombre de cultivo")
       var img = prompt("ingrese imagen")
-      const CultivosRef = ref (db,'cultivos/'+ "Pirulo"); // esta harcodeado para probar funcion
+    
+      await deleteDoc(doc(db, 'cultivos', id)); 
+      const ref = collection(db, "cultivos");
+      await addDoc(ref, {cultivo, img});
+      alert("Modificado exitosamente");
+
       
-      alert(CultivosRef); //no esta leyendo esta alert
-      await set(CultivosRef, { cultivo, img }) 
-      .then(() => {
-        alert("Modificado exitosamente");
-      })
-      .catch((error) => {
-        console.error("Error al modificar:", error);
-        alert("Error al modificar cultivo"+ error.message);
-      });
      } catch (error) {
       alert("Error al modificar cultivo" + error.message);
      }
       
     } ;
+    const BorrarEnfermedad= async(id)=>{ // selectivamente es asyncronico
+      try {
+        if(prompt("Si desea borrar esta enfermedad escriba si")=="si"){
+          await deleteDoc(doc(db, 'bd_enfermedades_'+ seleccionarEnfermedad, id));  
+          alert("borrado exitosamente");
+        }
 
+      } catch (error) {console.log(error); 
+        
+      }
+    }
     const BorrarCultivo= async(cultivos)=>{ // selectivamente es asyncronico
       try {
         if(prompt("Si desea borrar este cultivo escriba si")=="si"){
           await deleteDoc(doc(db, 'cultivos', cultivos));  
           alert("borrado exitosamente");
         }
-      
-
 
       } catch (error) {console.log(error); 
         
       }
     }
-
     const aniadirLink = ()=>{
         setArrayImg([...arrayImg,""]);
     }
@@ -133,7 +137,6 @@ export const Pagina_admin = ()=>{
 
     };
  
-
     const crearEnfermedad = async (cultivo,Titulo, a, arrayImg) => {
     const cultivoFiltrado=removeAccents(cultivo.toLowerCase());
       const concat = "bd_enfermedades_"+ cultivoFiltrado;
@@ -150,14 +153,18 @@ export const Pagina_admin = ()=>{
           const querySnapshot = await getDocs(collection(db,temp));
           
           if (!querySnapshot.empty) {
-              const cultivosList = querySnapshot.docs.map(doc => doc.data());
+            const cultivosList = querySnapshot.docs.map(doc => ({
+              id: doc.id, 
+              ...doc.data()
+            }));
   
               // Verifica que cultivosList no esté vacío
               // Borrar array y pushear todas las enfermedades 
               setEnfermedades([]);
+              setIdEnfermedad([]);
+        
               cultivosList.forEach((cultivo) => {
-                console.log(enfermedades);
-                console.log(cultivo);
+                setIdEnfermedad((id) => [...id,cultivo.id]);
                 setEnfermedades((enfermedades2) => [...enfermedades2,cultivo.Titulo]);
               });
               
@@ -424,6 +431,7 @@ Crear enfermedad
 
       <td><button type="button" className="btn btn-success"
              data-toggle="modal" data-target=".bd-crite-modal-lg" 
+              onClick={()=>{BorrarEnfermedad(idEnfermedad[index])}} 
             >Borrar</button></td>
     </tr>
             

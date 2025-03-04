@@ -29,6 +29,12 @@ export const NavBar=( )=>{
        handleSearch();
      }
    }
+   const handleLista = (event)=>{
+  navigate(event);
+   window.location.reload(); // recarga la pagina para que se muestre la lista de enfermedades
+  
+
+    }
     return (
 <div>
 
@@ -38,7 +44,8 @@ export const NavBar=( )=>{
   </li> 
   <li>
     <select onChange={
-    (e) => navigate(e.target.value)  
+
+    (e) => handleLista(e.target.value)  
   } > 
     <option value="/Lista_cultivos">Enfermedades</option>
     <option value="/Menu/Limon">Limón</option>
