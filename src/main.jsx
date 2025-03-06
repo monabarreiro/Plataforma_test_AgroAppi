@@ -29,6 +29,7 @@ import soja from './frontend/videos/soja2.mp4';
 
 import {App} from './frontend/App';
 import { Link } from "react-router-dom";
+import{ Token } from './frontend/token'; // va Mayuscula x que es una pagina aparte
 
 
 // esto va a contener todos los componentes
@@ -131,6 +132,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/App" element={<App />} />
         <Route path="/DashboardCompra" element={<DashboardCompra />} />
         <Route path="/Contacto" element={<Contacto />} />
+        <Route path="/token" element={<Token />} />
         
 
         

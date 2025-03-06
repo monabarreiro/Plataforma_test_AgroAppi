@@ -10,6 +10,8 @@ import {update,ref} from "firebase/database";
 import {doc,deleteDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged,getAuth } from "firebase/auth";
+import{useAuth} from "./token";
+
 
 import{ref as sRef} from "firebase/storage";
 
@@ -33,6 +35,20 @@ export const Pagina_admin = ()=>{
     const [valor, setValor] = useState(""); // para definir el valor
     const [idEnfermedad, setIdEnfermedad]= useState([]);
     const navigate = useNavigate();
+    
+    const ModificarEnfermedad= async (id)=>{
+      try {
+        var Titulo = prompt("ingrese nombre de enfermedad ya modificada")
+        var a = prompt("ingrese descripción")
+        await deleteDoc(doc(db, 'bd_enfermedades_'+ seleccionarEnfermedad.toLowerCase(), id));
+        const ref = collection(db, 'bd_enfermedades_'+ seleccionarEnfermedad.toLowerCase());
+        await addDoc(ref, {Titulo,a});
+        alert("Modificado exitosamente");
+        buscarImg2();
+      } catch (error) {
+        alert("Error al modificar enfermedad" + error.message);
+      }
+    } ;
     const ModificarCultivo= async (id)=>{
      
       try {
@@ -53,8 +69,9 @@ export const Pagina_admin = ()=>{
     const BorrarEnfermedad= async(id)=>{ // selectivamente es asyncronico
       try {
         if(prompt("Si desea borrar esta enfermedad escriba si")=="si"){
-          await deleteDoc(doc(db, 'bd_enfermedades_'+ seleccionarEnfermedad, id));  
+          await deleteDoc(doc(db, 'bd_enfermedades_'+ seleccionarEnfermedad.toLowerCase(), id));  
           alert("borrado exitosamente");
+          buscarImg2();
         }
 
       } catch (error) {console.log(error); 
@@ -143,7 +160,7 @@ export const Pagina_admin = ()=>{
         const ref = collection(db, concat);
         await addDoc(ref, {Titulo,a, arrayImg});
       Swal.fire({icon:"success", title:"Enfermedad agregada con éxito"});
-      
+      buscarImg2();
     };
     const buscarImg2 = async () => {
       try {
@@ -184,11 +201,14 @@ export const Pagina_admin = ()=>{
 
   }
   const auth = getAuth();
+  const {u,token}=useAuth();
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/auth.user
-      const uid = user.uid;
+      const uid = user.uid; // codigo id unico de usuario
+   
       // ...
    if(uid !="LfpK9lXjaEOq06un9BcNdy20s6o2"){
 
@@ -198,8 +218,14 @@ export const Pagina_admin = ()=>{
     } else {
       // User is signed out
       // ...
+    if(prompt("Pegue su token aqui")== token){
+  alert("Token correcto, tenés permisos para acceder a esta página");
+    
+    }else{
+      alert(" Token incorrecto, No tienes permisos para acceder a esta página");
+      navigate("/Lista_cultivos");
     }
-  });
+    }});
   useEffect(() => {
 
     buscarImg2();
@@ -424,7 +450,7 @@ Crear enfermedad
 
       <td><button type="button" className="btn btn-primary" 
             onClick={() => {
-              ModificarCultivo(idCultivo[index]);
+              ModificarEnfermedad(idEnfermedad[index]);
            }
           } data-toggle="modal" data-target=".bd-edit-modal-lg" 
             >Modificar Enfermedad </button></td>

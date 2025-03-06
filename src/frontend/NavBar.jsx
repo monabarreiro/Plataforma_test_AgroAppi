@@ -33,7 +33,6 @@ export const NavBar=( )=>{
   navigate(event);
    window.location.reload(); // recarga la pagina para que se muestre la lista de enfermedades
   
-
     }
     return (
 <div>
