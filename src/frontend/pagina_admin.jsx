@@ -3,7 +3,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { useState } from "react";
 import Swal from "sweetalert2";[useState];
 import {getDocs } from 'firebase/firestore';
-import {useEffect,useCallback} from'react';
+import {useEffect, useCallback} from'react';
 import { NavBar } from "./NavBar";  
 import "./pagina_admin.css";
 import {update,ref} from "firebase/database";
@@ -11,6 +11,9 @@ import {doc,deleteDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged,getAuth } from "firebase/auth";
 import{useAuth} from "./token";
+
+import{useContext} from "react";
+
 
 
 import{ref as sRef} from "firebase/storage";
@@ -35,6 +38,8 @@ export const Pagina_admin = ()=>{
     const [valor, setValor] = useState(""); // para definir el valor
     const [idEnfermedad, setIdEnfermedad]= useState([]);
     const navigate = useNavigate();
+  
+   
     
     const ModificarEnfermedad= async (id)=>{
       try {
@@ -201,31 +206,36 @@ export const Pagina_admin = ()=>{
 
   }
   const auth = getAuth();
-  const {u,token}=useAuth();
-
-  onAuthStateChanged(auth, (user) => {
+ 
+  const {user1,token} = useAuth();
+  onAuthStateChanged(auth,(user) => {
+    
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/auth.user
       const uid = user.uid; // codigo id unico de usuario
-   
+      
       // ...
-   if(uid !="LfpK9lXjaEOq06un9BcNdy20s6o2"){
+   if(uid !="LfpK9lXjaEOq06un9BcNdy20s6o2"){  // si el usuario no es administrador
 
     alert("No tienes permisos para acceder a esta página");
     navigate("/Lista_cultivos");
    }
-    } else {
+     else {
       // User is signed out
       // ...
-    if(prompt("Pegue su token aqui")== token){
-  alert("Token correcto, tenés permisos para acceder a esta página");
+      const tokenTexto = prompt("Pegue su token aqui");
+    if(tokenTexto== token) {
+    alert("Token correcto, tenés permisos para acceder a esta página");
+
     
     }else{
       alert(" Token incorrecto, No tienes permisos para acceder a esta página");
-      navigate("/Lista_cultivos");
+      //navigate("/Lista_cultivos");
     }
-    }});
+    }}
+    
+    });
   useEffect(() => {
 
     buscarImg2();

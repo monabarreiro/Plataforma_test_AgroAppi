@@ -26,6 +26,7 @@ import maiz from './frontend/videos/maiz2.mp4';
 import uva from './frontend/videos/uva.mp4';
 import trigo from './frontend/videos/trigo.mp4';
 import soja from './frontend/videos/soja2.mp4';
+import { GeneradorToken } from './frontend/generadorToken'; // va Mayuscula x que es una pagina aparte
 
 import {App} from './frontend/App';
 import { Link } from "react-router-dom";
@@ -110,8 +111,11 @@ const Lista_cultivos =() => {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <Token>
     <Router>
+       
       <Routes>
+         
         <Route path="/" element={<Principal />} />
         {/* <Route path="/dashboard" component={Dashboard} /> */}
         {/* Define other routes here */}
@@ -127,19 +131,18 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Menu_Trigo" element={<Menu_Trigo />} />
         <Route path="/Menu_Uva" element={<Menu_Uva />} />
         <Route path="/Mostrar_componentes/:id/:cultivos" element={<Mostrar_componentes />} />
-        <Route path="/Pagina_admin/" element={<Pagina_admin />} />
+        <Route path="/Pagina_admin/" element={<Pagina_admin /> } />
+
         <Route path="/Menu/:id" element={<Menu />} />
         <Route path="/App" element={<App />} />
         <Route path="/DashboardCompra" element={<DashboardCompra />} />
         <Route path="/Contacto" element={<Contacto />} />
-        <Route path="/token" element={<Token />} />
-        
-
-        
-
+        <Route path="/GeneradorToken" element={<GeneradorToken />} />
+    
       </Routes> 
+    
     </Router>
-   
+    </Token>
   </React.StrictMode>,
 )
 

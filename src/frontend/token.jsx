@@ -4,7 +4,9 @@ import { app } from "../backend/firebase";
 import { getIdToken } from "firebase/auth";
 import{ onAuthStateChanged } from "firebase/auth";
 const AuthContext = createContext();
-export const Token=()=>{
+
+export const Token=({ children
+})=>{
     const auth = getAuth(app);
     const [token, setToken] = useState('');
     const [user, setUser] = useState(null);
@@ -43,14 +45,12 @@ export const Token=()=>{
         }
     };
     return (
-        <div>
-            <button onClick={handleToken}>Get Token</button>
-            <p>{token}</p>
-            <button onClick={copyToken}>Copy Token</button>
+        <AuthContext.Provider value={{ user,token }}>
+            {children}
+        </AuthContext.Provider>
 
-        </div>
     );
 }
-export const useAuth = () => {
-    return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);
+
+
