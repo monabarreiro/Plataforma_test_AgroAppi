@@ -30,7 +30,14 @@ export const Principal =()=>{
             <div className= "d-flex flex-column align-items-start text-white p-5"> 
                <h2 className= "m-3 text-white" style={{textShadow: "2px 2px #000000"}} > Bienvenidos a la App de Cultivos </h2> 
       
-
+               <p style={{fontSize:"20px", textShadow: "2px 2px rgb(15, 14, 14)", textAlign: "left", padding: "0px", 
+                  margin: "15px", backdropFilter: "blur(5px)"}}> 
+               Esta aplicación sirve para detectar 
+               enfermedades y plagas en cultivos extensivos y frutales, <br /> permitiendo 
+               al productor y/o técnico, una identificación temprana
+               de cualquier enfermedad <br />
+               o insectos que ataquen a sus cultivos y así poder tomar medidas preventivas y correctivas.
+               </p>
                <Link to = "/Register" className= "">
                  <button className="btn btn-lg btn-light float-left
                
