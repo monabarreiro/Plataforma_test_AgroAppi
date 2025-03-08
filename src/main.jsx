@@ -32,7 +32,7 @@ import {App} from './frontend/App';
 import { Link } from "react-router-dom";
 import{ Token } from './frontend/token'; // va Mayuscula x que es una pagina aparte
 import{ ChequearToken } from './frontend/chequearToken'; // va Mayuscula x que es una pagina aparte
-
+import{RecuperoContraseña} from './frontend/recuperoContraseña'; // va Mayuscula x que es una pagina aparte
 // esto va a contener todos los componentes
 // los jsx hay que compilarlos 
 const Lista_cultivos =() => {
@@ -139,6 +139,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Contacto" element={<Contacto />} />
         <Route path="/GeneradorToken" element={<GeneradorToken />} />
         <Route path="/ChequearToken" element={<ChequearToken />} />
+        <Route path="/recuperoContraseña" element={<RecuperoContraseña />} />
     
       </Routes> 
     

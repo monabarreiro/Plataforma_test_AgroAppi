@@ -38,7 +38,7 @@ export const Login =()=>{
   
 // Formulario para completar 
     return(
-      <div className="container">
+      <div>
         <NavBar/>
         <img src={img12} alt="" width={"100px"} />
         <br />
@@ -62,6 +62,9 @@ export const Login =()=>{
         </button>
      
       </form>
+      <button>
+        <a href="/RecuperoContraseña">Olvidé mi contraseña</a>
+      </button>
     </div>
 )
 };

@@ -45,7 +45,12 @@ import img12 from "../img/logoagroappi.png";
      
       <div className="">
       <NavBar/>
-        <img src={img12} alt="" width={"100px"} />
+      <br />
+
+      <br />
+      <br />
+      <br />
+      <br />
 
       <form className="form-signin" onSubmit={handleSignUp}>
         <h2 className="form-signin-heading fw-bold">Por favor regístrese: </h2>

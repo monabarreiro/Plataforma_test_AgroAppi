@@ -80,7 +80,6 @@ const filteredCultivosList = cultivosList.filter(cultivo => cultivo.cultivo == i
 
                     Enfermedades de {id} <br/>
                     <img src={img} alt={img} width={"200px"} />
-
                 </h2>
             </div>
 
