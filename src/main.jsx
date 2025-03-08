@@ -31,7 +31,7 @@ import { GeneradorToken } from './frontend/generadorToken'; // va Mayuscula x qu
 import {App} from './frontend/App';
 import { Link } from "react-router-dom";
 import{ Token } from './frontend/token'; // va Mayuscula x que es una pagina aparte
-
+import{ ChequearToken } from './frontend/chequearToken'; // va Mayuscula x que es una pagina aparte
 
 // esto va a contener todos los componentes
 // los jsx hay que compilarlos 
@@ -113,7 +113,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Token>
     <Router>
-       
+  
       <Routes>
          
         <Route path="/" element={<Principal />} />
@@ -138,6 +138,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/DashboardCompra" element={<DashboardCompra />} />
         <Route path="/Contacto" element={<Contacto />} />
         <Route path="/GeneradorToken" element={<GeneradorToken />} />
+        <Route path="/ChequearToken" element={<ChequearToken />} />
     
       </Routes> 
     

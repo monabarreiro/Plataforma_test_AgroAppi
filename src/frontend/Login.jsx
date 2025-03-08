@@ -25,6 +25,8 @@ export const Login =()=>{
       alert("Login exitoso");
       if(email =='monicabarreiro@gmail.com' && password == '123456'){
         alert("Sos Administrador");
+        navigate("/GeneradorToken");    
+        return;
 
       }
       navigate("/Lista_cultivos");
@@ -39,6 +41,8 @@ export const Login =()=>{
       <div className="container">
         <NavBar/>
         <img src={img12} alt="" width={"100px"} />
+        <br />
+        <br />
         <h2 className="form-signin-heading"> Por favor inicie sesión </h2>
        
       <form className ="form-signin" onSubmit = {handleLogin}>

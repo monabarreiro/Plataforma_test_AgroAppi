@@ -207,7 +207,7 @@ export const Pagina_admin = ()=>{
   }
   const auth = getAuth();
  
-  const {user1,token} = useAuth();
+
   onAuthStateChanged(auth,(user) => {
     
     if (user) {
@@ -224,15 +224,7 @@ export const Pagina_admin = ()=>{
      else {
       // User is signed out
       // ...
-      const tokenTexto = prompt("Pegue su token aqui");
-    if(tokenTexto== token) {
-    alert("Token correcto, tenés permisos para acceder a esta página");
-
-    
-    }else{
-      alert(" Token incorrecto, No tienes permisos para acceder a esta página");
-      //navigate("/Lista_cultivos");
-    }
+      
     }}
     
     });
@@ -346,13 +338,11 @@ export const Pagina_admin = ()=>{
     <th scope="col">Soluciones Biológicas</th>
     <th scope="col">URL de Imágenes</th>
     <th scope="col">Botones</th>
-
+    
     <tbody>
 
 <tr>
- 
   
-
 <td><input type="text"
             placeholder="Solución Agroquímica"
             value={agroquimicas}
