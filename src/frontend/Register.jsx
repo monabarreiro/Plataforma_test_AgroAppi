@@ -21,22 +21,53 @@ import img12 from "../img/logoagroappi.png";
  export const Register =()=>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
   const [error, setError] = useState('');
   console.log(error);
   const navigate = useNavigate();
 
   const auth = getAuth(app);
-    
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+};
+const validatePhone = (phone) => {
+  const regex = /^\d{4}-?\d{4}$/;
+  return regex.test(phone);
+};
+const validatePassword = (password) => {
+  if (password.length < 6 || password.length > 20) {
+    alert('Password debe tener por lo menos 6 caracteres y menos de 20');
+    return false;
+  }
+  return true;
+};
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     setError('');
+
+
+
+    if (!validateEmail(email)) {
+      alert('Invalid email');
+      return;
+    }
+    if (!validatePassword(password)) {
+      alert('Password inválido');
+      return;
+    }
+    if (!validatePhone(phone)) {
+     alert("Numero Inválido" + phone);
+      return;
+    }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      alert('User created successfully!');
+      alert('Usuario creado exitosamente ');
       navigate("/Login");
 
     } catch (error) {
-      setError(error.message);
+     alert(error.message);
     } 
   }
 
@@ -46,7 +77,6 @@ import img12 from "../img/logoagroappi.png";
       <div className="">
       <NavBar/>
       <br />
-
       <br />
       <br />
       <br />
@@ -82,14 +112,19 @@ import img12 from "../img/logoagroappi.png";
           autoFocus
         />
 
-        <label htmlFor="telefono" className="sr-only fw-bold m-1">
-          Telefono
+        <label htmlFor="telefono" className="sr-only fw-bold m-1"
+      >
+          Teléfono
         </label>
         <input
           type="text"
           id="telefono"
           className="form-control"
-          placeholder="Telefono"
+          placeholder=" Telefono ej: 1234-5678"
+          value={phone}
+          onChange={
+            (e) => setPhone(e.target.value)
+          }
           required
           autoFocus
         />
@@ -116,9 +151,7 @@ import img12 from "../img/logoagroappi.png";
         </div>
           <button
             className="btn btn-lg btn-primary btn-block mt-3"
-            type="submit"
-          
-          >
+            type="submit">
             Sign in
           </button>
       

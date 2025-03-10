@@ -3,25 +3,21 @@ import { collection, addDoc } from 'firebase/firestore';
 import { useState } from "react";
 import Swal from "sweetalert2";[useState];
 import {getDocs } from 'firebase/firestore';
-import {useEffect, useCallback} from'react';
+import {useEffect} from'react';
 import { NavBar } from "./NavBar";  
 import "./pagina_admin.css";
-import {update,ref} from "firebase/database";
+import {ref} from "firebase/database";
 import {doc,deleteDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged,getAuth } from "firebase/auth";
-import{useAuth} from "./token";
+import { onSnapshot } from "firebase/firestore";
 
-import{useContext} from "react";
-
-
-
-import{ref as sRef} from "firebase/storage";
 
 
 
 
 export const Pagina_admin = ()=>{
+  const [mensajes, setMensajes] = useState([]);
   
     const [cultivo, setCultivo] = useState("");
     const [img, setImg] = useState("");
@@ -97,6 +93,25 @@ export const Pagina_admin = ()=>{
     const aniadirLink = ()=>{
         setArrayImg([...arrayImg,""]);
     }
+   
+   
+    useEffect(() => {
+      const q = collection(db, "messages");
+  
+      const unsubscribe = onSnapshot (q, (snapshot) => {
+        let newMessages = [];
+        snapshot.forEach((doc) => {
+          newMessages.push({ id: doc.id, ...doc.data() });
+        });
+  
+        setMensajes(newMessages);
+      
+      });
+  
+      return () => unsubscribe(); // Cleanup function to prevent memory leaks
+    }, []);
+
+
     const handleArray=(index,event)=>{
     const newLinks = [...arrayImg];
     newLinks[index] = event.target.value;
@@ -465,11 +480,35 @@ Crear enfermedad
     }
   </tbody>
 </table>
+<table className="table table-dark">
+<thead className="thead-dark">
+    <tr>
+      
+      <th scope="col">Nombre</th>
+      <th scope="col">mail</th>
+      <th scope="col">mensaje</th>
+    </tr>
+  </thead>
+  <tbody>
+  {
+  mensajes.map((mensaje, index) => {
+    return <tr
+
+    key={index}>
+      <td>{mensaje.name}</td>
+      <td>{mensaje.email}</td>
+      <td>{mensaje.message}</td>
+    </tr>
+  })
+}
+  </tbody>
+
+</table>
+
         </div>
         </div>
         </div>
     )
 }
-
 
 
