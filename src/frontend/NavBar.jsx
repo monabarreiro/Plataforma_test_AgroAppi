@@ -3,12 +3,28 @@ import "./navBar.css";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import img13 from "../img/logo.png";
+import { useEffect } from "react";
+import { getDocs } from "firebase/firestore";
+import { collection } from "firebase/firestore";
+import{db}from "../backend/firebase";
 
 export const NavBar=( )=>{
    const [searchTerm, setSearchTerm] = useState('');
    const [searchBy, setSearchBy] = useState('cultivo');  // por defecto se busca por cultivo
-  const [cultivos, setcultivos] = useState("limon");
+   const [cultivos, setcultivos] = useState("limon");
    const navigate= useNavigate();
+   const [cultivosLista, setCultivosLista] = useState([]);  // cultivos es la variable del useState
+   
+     useEffect(() => {
+       const fetchCultivos = async () => {
+         const querySnapshot = await getDocs(collection(db,'cultivos'));
+         const cultivosList = querySnapshot.docs.map(doc => doc.data());
+         setCultivosLista(cultivosList);
+        
+       };
+       fetchCultivos();
+     }, []);
+    
    const handleChange= (event)=>{
      setSearchTerm(event.target.value);
    };
@@ -27,6 +43,7 @@ export const NavBar=( )=>{
    const handleEnter = (event)=>{
      if(event.key === 'Enter'){
        handleSearch();
+       window.location.reload(); // recarga la pagina para que se muestre la lista de enfermedades
      }
    }
    const handleLista = (event)=>{
@@ -46,12 +63,18 @@ export const NavBar=( )=>{
 
     (e) => handleLista(e.target.value)  
   } > 
-    <option value="/Lista_cultivos">Enfermedades</option>
-    <option value="/Menu/Limon">Limón</option>
-    <option value="/Menu/Maiz">Maíz</option>
-    <option value="/Menu/Soja">Soja</option>
-    <option value="/Menu/Trigo">Trigo</option>
-    <option value="/Menu/Uva">Uva</option>
+  <option value="/Lista_cultivos">Enfermedades</option>
+
+   {cultivosLista.map( (link,index) => ( 
+  <option key={index} value={"/Menu/" + link.cultivo}  > 
+  {
+   link.cultivo
+  }
+  </option>
+   ))}  
+
+   
+
 
    </select>
       </li> 

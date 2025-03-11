@@ -34,6 +34,15 @@ export const Pagina_admin = ()=>{
     const [valor, setValor] = useState(""); // para definir el valor
     const [idEnfermedad, setIdEnfermedad]= useState([]);
     const navigate = useNavigate();
+    const [paginaActual, setPaginaActual] = useState(1);
+    const [postsPorPagina] = useState(4);// cuantos posts por pagina
+    const [paginasTotales,setPaginasTotales] = useState(0);// cuantas paginas totales
+    const [paginaActualCultivos,setPaginaActualCultivos] = useState(1);
+    const [postsPorPaginaCultivos] = useState(2);// cuantos posts por pagina
+    const [paginasTotalesCultivos,setPaginasTotalesCultivos] = useState(4);// cuantas paginas totales
+    const [paginaActualEnfermedades,setPaginaActualEnfermedades] = useState(1);
+    const [postsPorPaginaEnfermedades] = useState(4);// cuantos posts por pagina
+    const [paginasTotalesEnfermedades,setPaginasTotalesEnfermedades] = useState(0);// cuantas paginas totales
   
    
     
@@ -103,7 +112,7 @@ export const Pagina_admin = ()=>{
         snapshot.forEach((doc) => {
           newMessages.push({ id: doc.id, ...doc.data() });
         });
-  
+        setPaginasTotales(Math.ceil(newMessages.length / postsPorPagina));
         setMensajes(newMessages);
       
       });
@@ -111,7 +120,10 @@ export const Pagina_admin = ()=>{
       return () => unsubscribe(); // Cleanup function to prevent memory leaks
     }, []);
 
-
+    const indexUltimoMensaje = paginaActual * postsPorPagina;
+    const indexPrimerMensaje = indexUltimoMensaje - postsPorPagina;
+    const mensajesActuales = mensajes.slice(indexPrimerMensaje, indexUltimoMensaje);
+    const paginate = (pageNumber) => setPaginaActual(pageNumber);
     const handleArray=(index,event)=>{
     const newLinks = [...arrayImg];
     newLinks[index] = event.target.value;
@@ -149,10 +161,11 @@ export const Pagina_admin = ()=>{
               setListadoCultivos([]);
               cultivosList.forEach((cultivo) => {
              
-               setIdCultivo((ListaCultivos) => [...ListaCultivos,cultivo.id]);
+              setIdCultivo((ListaCultivos) => [...ListaCultivos,cultivo.id]);
           
               setListadoCultivos((ListaCultivos) => [...ListaCultivos,cultivo.cultivo]);
-              });
+             setPaginasTotalesCultivos(Math.ceil(cultivosList.length / postsPorPaginaCultivos));
+            });
 
              // const CultivosRef = sRef (db,'cultivos/'+ "Pirulo"); // esta harcodeado para probar funcion
       // aca tenemos que copiar el id del db de firebase.
@@ -166,6 +179,11 @@ export const Pagina_admin = ()=>{
       }
   };
      buscarCultivo();
+     const indexUltimoCultivo = paginaActualCultivos * postsPorPaginaCultivos;
+     const indexPrimerCultivo = indexUltimoCultivo - postsPorPaginaCultivos;
+     const cultivosActuales = listadoCultivos.slice(indexPrimerCultivo, indexUltimoCultivo);
+     const paginateCultivos = (pageNumber) => setPaginaActualCultivos(pageNumber);
+
     const crearCultivo = async (cultivo, img) => {
         const ref = collection(db, "cultivos");
         await addDoc(ref, {cultivo, img});
@@ -413,7 +431,7 @@ Crear enfermedad
 
   <tbody>
     
-    {listadoCultivos.map((point, index) => {
+    {cultivosActuales.map((point, index) => {
             return <tr key={index}>
       <th scope="row">{index}</th>
       <td><h2>{point.charAt(0).toUpperCase() + point.slice(1)}</h2></td>
@@ -434,6 +452,17 @@ Crear enfermedad
     </tr>
             
         })
+    }
+    {
+  paginasTotalesCultivos > 1 ? (
+    <div className="pagination">
+      {Array.from({ length: paginasTotalesCultivos }).map((_, index) => (
+        <button key={index} onClick={() => paginateCultivos(index + 1)}>
+          {index + 1}
+        </button>
+      ))}
+    </div>
+  ) : null
     }
   </tbody>
 </table>
@@ -491,7 +520,7 @@ Crear enfermedad
   </thead>
   <tbody>
   {
-  mensajes.map((mensaje, index) => {
+  mensajesActuales.map((mensaje, index) => {
     return <tr
 
     key={index}>
@@ -500,6 +529,17 @@ Crear enfermedad
       <td>{mensaje.message}</td>
     </tr>
   })
+}
+{
+  paginasTotales > 1 ? (
+    <div className="pagination">
+      {Array.from({ length: paginasTotales }).map((_, index) => (
+        <button key={index} onClick={() => paginate(index + 1)}>
+          {index + 1}
+        </button>
+      ))}
+    </div>
+  ) : null
 }
   </tbody>
 

@@ -48,10 +48,10 @@ export const Login =()=>{
       <form className ="form-signin" onSubmit = {handleLogin}>
     
 
-        <label htmlFor="inputName"  className="sr-only m-2 fw-bold">email</label>
+       
         <input value ={email}  onChange={(e) => setEmail(e.target.value)} type ="text" id="inputName" className="form-control" placeholder="email" required autoFocus />
        
-        <label htmlFor="inputPassword" className="sr-only m-2 fw-bold">Password</label>
+       
         <input value ={password}  onChange={(e) => setPassword(e.target.value)} type="password" id="inputPassword" className="form-control" placeholder="Password" required />
         <div className="checkbox">
  

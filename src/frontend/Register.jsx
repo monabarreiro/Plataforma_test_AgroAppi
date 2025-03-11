@@ -84,21 +84,17 @@ const validatePassword = (password) => {
 
       <form className="form-signin" onSubmit={handleSignUp}>
         <h2 className="form-signin-heading fw-bold">Por favor regístrese: </h2>
-        <label htmlFor="inputName" className="sr-only fw-bold m-1">
-          Nombre
-        </label>
+      
         <input
           type="text"
           id="inputName"
           className="form-control"
-          placeholder="Nombre"
+          placeholder="Nombre y Apellido"
           required
           autoFocus
         />
 
-        <label htmlFor="inputEmail" className="sr-only fw-bold m-1">
-          Direccion de email
-        </label>
+       
         <input
           type="email"
           value={email}
@@ -112,10 +108,7 @@ const validatePassword = (password) => {
           autoFocus
         />
 
-        <label htmlFor="telefono" className="sr-only fw-bold m-1"
-      >
-          Teléfono
-        </label>
+       
         <input
           type="text"
           id="telefono"
@@ -129,9 +122,7 @@ const validatePassword = (password) => {
           autoFocus
         />
 
-        <label htmlFor="inputPassword" className="sr-only fw-bold m-1">
-          Password
-        </label>
+      
         <input
           type="password"
           value={password}

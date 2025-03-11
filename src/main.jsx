@@ -12,7 +12,7 @@ import {db} from './backend/firebase';  // importamos la base de datos de fireba
 import{getDocs, collection } from 'firebase/firestore';
 import{useState, useEffect} from 'react';
 import { Login} from './frontend/Login';
-import { Menu_Citricos} from './frontend/Menu_Citricos';
+import {Menu_Citricos} from './frontend/Menu_Citricos';
 import {Menu_Maiz}from './frontend/Menu_Maiz'; 
 import {Menu_Trigo}from './frontend/Menu_Trigo';
 import {Menu_Uva}from './frontend/Menu_Uva';
@@ -26,6 +26,7 @@ import maiz from './frontend/videos/maiz2.mp4';
 import uva from './frontend/videos/uva.mp4';
 import trigo from './frontend/videos/trigo.mp4';
 import soja from './frontend/videos/soja2.mp4';
+
 import { GeneradorToken } from './frontend/generadorToken'; // va Mayuscula x que es una pagina aparte
 
 import {App} from './frontend/App';
@@ -41,9 +42,12 @@ const Lista_cultivos =() => {
 
   useEffect(() => {
     const fetchCultivos = async () => {
-      const querySnapshot = await getDocs(collection(db, 'cultivos'));
+      const querySnapshot = await getDocs(collection(db,'cultivos'));
       const cultivosList = querySnapshot.docs.map(doc => doc.data());
       setCultivos(cultivosList);
+      const cultivosAexcluir= ["Limón", "Maíz", "Soja", "Trigo", "Uva"];
+      const cultivosFiltrados = cultivosList.filter(cultivo => !cultivosAexcluir.includes(cultivo.cultivo));
+      setCultivos(cultivosFiltrados);
     };
 
     fetchCultivos();
@@ -56,6 +60,8 @@ const Lista_cultivos =() => {
       <br />
       <br />
       <br />
+   
+
       < Link to="/Menu/Limon" style={{textDecoration:"none", fontSize:"40px", color:"black"}}> 
        <h1 className= "m-3 text-black" style={{position:"relative",userSelect:"none"}} /> 
       Cítricos  <h1/> </Link>
@@ -95,7 +101,22 @@ const Lista_cultivos =() => {
         <source src={uva} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-{/* 
+
+      {cultivos.map((cultivo, index) => {
+return(
+  <div key={index} className="row align-items-start">
+    < Link to={"/Menu/" + cultivo.cultivo}style={{textDecoration:"none", fontSize:"40px", color:"black"}}> 
+       <h1 className= "m-3 text-black" style={{position:"relative",userSelect:"none"}} /> 
+     {cultivo.cultivo} <h1/> </Link>
+     <img src={cultivo.img} alt="" />
+    </div>)
+      }
+   
+
+      )}
+{
+/* 
+
       <div className="row align-items-start">
       { cultivos.map((cultivo, index) => (
           <div key={index} className="col-6 ">
