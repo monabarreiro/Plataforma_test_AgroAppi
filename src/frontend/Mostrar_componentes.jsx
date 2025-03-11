@@ -35,7 +35,7 @@ export const Mostrar_componentes= () =>{
                    setData(TituloEnfermedad ||""); //quiere decir que en caso que no encuentre
                    //el TituloEnfermedad va a ser un string vacío (or)||.
                    Descripcion=cultivo.a
-                   if (cultivo.arraImg!=undefined){
+                   if (cultivo.arrayImg!=undefined){
                   setArrayImg(cultivo.arrayImg ||"");
                   console.log(cultivo.arrayImg);
                    }

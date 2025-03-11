@@ -62,7 +62,7 @@ const Lista_cultivos =() => {
       <br />
    
 
-      < Link to="/Menu/Limon" style={{textDecoration:"none", fontSize:"40px", color:"black"}}> 
+      < Link to="/Menu/Limón" style={{textDecoration:"none", fontSize:"40px", color:"black"}}> 
        <h1 className= "m-3 text-black" style={{position:"relative",userSelect:"none"}} /> 
       Cítricos  <h1/> </Link>
       <video autoPlay muted loop width="100%" 
@@ -70,7 +70,7 @@ const Lista_cultivos =() => {
         <source src={limones} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      < Link to="/Menu/Maiz" style={{textDecoration:"none", fontSize:"40px", color:"black"}}>
+      < Link to="/Menu/Maíz" style={{textDecoration:"none", fontSize:"40px", color:"black"}}>
       <h1 className= "m-3 text-black" style={{position:"relative", zIndex:"-1"}} > 
         Maíz </h1> </Link>
       <video autoPlay muted loop width="100%"

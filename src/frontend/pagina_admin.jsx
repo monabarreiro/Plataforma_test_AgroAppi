@@ -55,6 +55,7 @@ export const Pagina_admin = ()=>{
         await addDoc(ref, {Titulo,a});
         alert("Modificado exitosamente");
         buscarImg2();
+        window.location.reload();
       } catch (error) {
         alert("Error al modificar enfermedad" + error.message);
       }
@@ -69,6 +70,7 @@ export const Pagina_admin = ()=>{
       const ref = collection(db, "cultivos");
       await addDoc(ref, {cultivo, img});
       alert("Modificado exitosamente");
+      window.location.reload();
 
       
      } catch (error) {
@@ -82,6 +84,7 @@ export const Pagina_admin = ()=>{
           await deleteDoc(doc(db, 'bd_enfermedades_'+ seleccionarEnfermedad.toLowerCase(), id));  
           alert("borrado exitosamente");
           buscarImg2();
+          window.location.reload();
         }
 
       } catch (error) {console.log(error); 
@@ -93,6 +96,7 @@ export const Pagina_admin = ()=>{
         if(prompt("Si desea borrar este cultivo escriba si")=="si"){
           await deleteDoc(doc(db, 'cultivos', cultivos));  
           alert("borrado exitosamente");
+          window.location.reload();
         }
 
       } catch (error) {console.log(error); 
