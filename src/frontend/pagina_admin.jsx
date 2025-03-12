@@ -254,6 +254,7 @@ export const Pagina_admin = ()=>{
       
       // ...
    if(uid !="LfpK9lXjaEOq06un9BcNdy20s6o2"){  // si el usuario no es administrador
+    // access key 
 
     alert("No tienes permisos para acceder a esta página");
     navigate("/Lista_cultivos");
