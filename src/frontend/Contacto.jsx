@@ -11,7 +11,6 @@ export const Contacto = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-
     message: "",
   });
 
@@ -28,12 +27,12 @@ export const Contacto = () => {
 
       // 2. Enviar correo con EmailJS
       await emailjs.send(
-        "service_wv124or",  // Reemplaza con tu ID de servicio
-        "template_6jd1o5q", // Reemplaza con tu ID de plantilla
+        "service_ogdkgy2",  // Reemplaza con tu ID de servicio
+        "template_vwqms8v", // Reemplaza con tu ID de plantilla
         formData,
         
-       // Reemplaza con tu ID de usuario // ESTE LO AGREGUE YO X EL TELEFONO
-      "oR5h3UQJNuhCCFBNy"   // Reemplaza con tu clave pública de EmailJS
+       // Reemplaza con la Public Key // 
+      "4pBHxJgLYR56kwp5k"   // Reemplaza con tu clave pública de EmailJS
       );
 
       alert("Mensaje enviado con éxito");
@@ -75,7 +74,7 @@ export const Contacto = () => {
 
         
         <input
-        name="email"
+          name="email"
           type="email"
           
           id="inputEmail"

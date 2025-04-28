@@ -253,7 +253,7 @@ export const Pagina_admin = ()=>{
       const uid = user.uid; // codigo id unico de usuario
       
       // ...
-   if(uid !="LfpK9lXjaEOq06un9BcNdy20s6o2"){  // si el usuario no es administrador
+   if(uid !="XLoHa1Ab8lX67SEAjyN4Qe5vjCA2"){  // si el usuario no es administrador
     // access key 
 
     alert("No tienes permisos para acceder a esta página");

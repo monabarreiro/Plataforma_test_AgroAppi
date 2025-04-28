@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  
 import { NavBar } from './NavBar';
 import img12 from"../img/logoagroappi.png";
+import  emailjs  from "emailjs-com";
+import { useAuth } from "./token";
 
 
 export const Login =()=>{
@@ -14,6 +16,30 @@ export const Login =()=>{
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);// 
   const navigate= useNavigate();
+  const { user, token } = useAuth();
+  const [formData, setFormData] = useState({
+    token: token ,
+    name:"Monica Barreiro",
+    email: "barreiro.monica@gmail.com",
+    to_email: "barreiro.monicaa@gmail.com",
+  });
+ 
+  const enviarToken = async() => {
+  
+    try {
+      await emailjs.send(
+        "service_ogdkgy2",  // Reemplaza con tu ID de servicio
+        "template_f6mksw2", // Reemplaza con tu ID de plantilla
+          formData, // Envía el correo electrónico como parte del mensaje
+        "4pBHxJgLYR56kwp5k"   // Reemplaza con tu clave pública de EmailJS
+      );
+      alert("Token enviado a tu correo");
+    } catch (error) {
+      console.error("Error al enviar:", error);
+      alert("Hubo un error al enviar el token");
+    }
+  }
+
   
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -23,9 +49,12 @@ export const Login =()=>{
       // Login successful
       
       alert("Login exitoso");
-      if(email =='monicabarreiro@gmail.com' && password == '123456'){
+      if(email =='barreiro.monica@gmail.com' && password == '123456'){
         alert("Sos Administrador");
-        navigate("/GeneradorToken");    
+        enviarToken ();
+        // Redirigir a la página de administrador
+       
+        navigate("/ChequearToken");    
         return;
 
       }
